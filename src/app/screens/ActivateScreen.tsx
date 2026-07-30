@@ -16,6 +16,24 @@ const benefitRows = [
   },
 ];
 
+const merchantOffers = [
+  {
+    icon: 'hotel',
+    title: 'Extra points on hotel bookings',
+    detail: 'Partner with Expedia for travel rewards.',
+  },
+  {
+    icon: 'flight_takeoff',
+    title: 'Bonus points on flights',
+    detail: 'Spring Japan flights with Rakuten Card.',
+  },
+  {
+    icon: 'shopping_bag',
+    title: 'Rewards on fashion & basics',
+    detail: 'Uniqlo purchases earn extra points.',
+  },
+];
+
 /** Chapter 2 — Activation / linked status. */
 export function ActivateScreen() {
   const { isLinked, loyalty, goToChapter, persona } = useDemo();
@@ -137,49 +155,22 @@ export function ActivateScreen() {
           </div>
         ))}
 
-        {/* Merchant offer teasers */}
-        <div className="grid grid-cols-3 gap-3">
-          {/* Expedia */}
-          <button
-            type="button"
-            onClick={() => goToChapter(3)}
-            className="group relative overflow-hidden rounded-2xl shadow-card"
-          >
-            <img src="/pickup_expedia-hotel.jpg" alt="Expedia" className="aspect-[1/1.2] w-full object-cover transition-transform duration-300 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-            <div className="absolute bottom-0 w-full p-2.5 text-center text-white">
-              <img src="/logo_280x60_expedia.hotels.jp.png" alt="Expedia" className="mx-auto h-4 w-auto mb-1" />
-              <p className="text-[10px] font-bold leading-tight">Hotel Deals</p>
-            </div>
-          </button>
-
-          {/* Spring Japan */}
-          <button
-            type="button"
-            onClick={() => goToChapter(3)}
-            className="group relative overflow-hidden rounded-2xl shadow-card"
-          >
-            <img src="/pickup_springjapan.jpg" alt="Spring Japan" className="aspect-[1/1.2] w-full object-cover transition-transform duration-300 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-            <div className="absolute bottom-0 w-full p-2.5 text-center text-white">
-              <p className="text-[10px] font-bold leading-tight">Spring Japan</p>
-              <p className="text-[9px] opacity-75">Travel Rewards</p>
-            </div>
-          </button>
-
-          {/* Uniqlo */}
-          <button
-            type="button"
-            onClick={() => goToChapter(3)}
-            className="group relative overflow-hidden rounded-2xl shadow-card"
-          >
-            <img src="/pickup_uniqlo.png" alt="Uniqlo" className="aspect-[1/1.2] w-full object-cover transition-transform duration-300 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-            <div className="absolute bottom-0 w-full p-2.5 text-center text-white">
-              <img src="/logo_280x60_uniqlo.com.png" alt="Uniqlo" className="mx-auto h-4 w-auto mb-1" />
-              <p className="text-[10px] font-bold leading-tight">Fashion & Basics</p>
-            </div>
-          </button>
+        <div className="rounded-2xl border-t-2 border-surface-container-high bg-surface-container-lowest/50 pt-4 px-4 pb-0">
+          <p className="text-[11px] font-bold uppercase tracking-wide text-muted mb-3">Partner Merchant Offers</p>
+          <div className="space-y-3 pb-4">
+            {merchantOffers.map((m) => (
+              <div
+                key={m.title}
+                className="rounded-xl border border-surface-container-high bg-white p-3 shadow-sm"
+              >
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary-fixed text-sm">
+                  <Icon name={m.icon} filled className="text-secondary" />
+                </span>
+                <p className="mt-2 font-heading text-xs font-bold text-on-surface">{m.title}</p>
+                <p className="text-xs text-on-surface-variant">{m.detail}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="flex flex-col gap-2">

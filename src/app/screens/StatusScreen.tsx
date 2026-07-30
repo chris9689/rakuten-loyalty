@@ -54,23 +54,6 @@ export function StatusScreen() {
           </div>
         )}
 
-        {/* Spending Summary card — linked only */}
-        {isLinked && (
-          <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
-            <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Spending Summary</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-on-surface">
-              You've spent <span className="font-bold">¥42,000</span> on home setup — kitchen appliances, lighting, and furniture.
-            </p>
-            <button
-              type="button"
-              onClick={() => goToChapter(4)}
-              className="mt-3 flex items-center gap-1 text-xs font-bold text-primary"
-            >
-              See personalised rewards
-              <Icon name="arrow_forward" className="text-sm" />
-            </button>
-          </section>
-        )}
 
         {/* Greeting */}
         <section className="flex flex-col gap-3">
@@ -133,6 +116,24 @@ export function StatusScreen() {
 
         {/* Loyalty status card — linked only */}
         {isLinked && <LoyaltyStatusCard />}
+
+        {/* Spending Insight card — linked only, moved after loyalty status */}
+        {isLinked && (
+          <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
+            <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Spending Insight</p>
+            <p className="mt-1.5 text-sm leading-relaxed text-on-surface">
+              You've spent <span className="font-bold">¥42,000</span> on home setup — kitchen appliances, lighting, and furniture.
+            </p>
+            <button
+              type="button"
+              onClick={() => goToChapter(4)}
+              className="mt-3 flex items-center gap-1 text-xs font-bold text-primary"
+            >
+              See personalised rewards
+              <Icon name="arrow_forward" className="text-sm" />
+            </button>
+          </section>
+        )}
 
         {/* Bento grid: linked = benefits + trend / unlinked = trend + quick actions */}
         {isLinked ? (
