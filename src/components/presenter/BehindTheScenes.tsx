@@ -68,15 +68,15 @@ export function BehindTheScenes() {
               <section>
                 <div className="mb-2 flex items-center gap-2">
                   <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-ink text-[11px] font-black text-white">✦</span>
-                  <h3 className="text-sm font-extrabold text-ink">How it starts — AI insight detected</h3>
+                  <h3 className="text-sm font-extrabold text-ink">How it starts — spending insight detected</h3>
                 </div>
                 <div className="rounded-2xl border border-black/10 bg-surface-container-low p-4">
                   <div className="mb-2 flex items-center gap-2">
-                    <span className="text-base" aria-hidden>🤖</span>
-                    <p className="text-xs font-bold text-ink">Rakuten Card AI agent · July 2026</p>
+                    <span className="text-base" aria-hidden>📊</span>
+                    <p className="text-xs font-bold text-ink">Rakuten Card · Spending Summary</p>
                   </div>
                   <p className="text-xs leading-relaxed text-muted">
-                    <span className="font-semibold text-ink">Spending insight detected:</span> Hanako has spent ¥42,000 on home setup items over the past 60 days — kitchen appliances, lighting, furniture, curtains.
+                    <span className="font-semibold text-ink">Pattern detected:</span> Hanako has spent ¥42,000 on home setup items over the past 60 days — kitchen appliances, lighting, furniture, curtains.
                   </p>
                   <p className="mt-1.5 text-[11px] italic text-muted">
                     Hypothesis: possible recent move or home renovation in progress.
