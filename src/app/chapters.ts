@@ -1,0 +1,64 @@
+import type { Chapter } from '@/types';
+
+/**
+ * Customer-facing app steps. These are the only screens the customer sees.
+ * All decisioning/orchestration lives in the hidden presenter "Behind the
+ * scenes" view, never in these screens.
+ */
+export const chapters: Chapter[] = [
+  {
+    id: 1,
+    key: 'home',
+    title: 'Home',
+    copy: 'Your Rakuten loyalty status today.',
+    icon: '🏠',
+  },
+  {
+    id: 2,
+    key: 'activate',
+    title: 'Activate',
+    copy: 'Unlock personalised loyalty benefits.',
+    icon: '🔗',
+  },
+  {
+    id: 3,
+    key: 'browse',
+    title: 'Browse',
+    copy: 'Electronics for your home.',
+    icon: '🛒',
+  },
+  {
+    id: 4,
+    key: 'offer',
+    title: 'Offer',
+    copy: 'Complete your new home setup.',
+    icon: '🎁',
+  },
+  {
+    id: 5,
+    key: 'points',
+    title: 'Points',
+    copy: 'New ways to use your points.',
+    icon: '✨',
+  },
+  {
+    id: 6,
+    key: 'recap',
+    title: 'Recap',
+    copy: 'Your monthly loyalty progress.',
+    icon: '📈',
+  },
+  {
+    id: 7,
+    key: 'saved',
+    title: 'Saved',
+    copy: 'Your saved benefits and offers.',
+    icon: '🔖',
+  },
+];
+
+export const chapterById = (id: number): Chapter =>
+  chapters.find((c) => c.id === id) ?? chapters[0];
+
+export const totalChapters = chapters.length;
+

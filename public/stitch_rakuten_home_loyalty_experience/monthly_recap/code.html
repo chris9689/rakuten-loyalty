@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rakuten - Monthly Loyalty Progress</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .loyalty-gradient {
+            background: linear-gradient(135deg, #ae2f34 0%, #ff6b6b 100%);
+        }
+        .progress-shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#dbe4ed",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#e0e9f2",
+                      "on-secondary-container": "#6d0010",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#ffddb5",
+                      "inverse-surface": "#293138",
+                      "tertiary-fixed-dim": "#ffb957",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#e7bdb6",
+                      "on-tertiary-container": "#ffcf94",
+                      "secondary-container": "#ff6b6b",
+                      "inverse-on-surface": "#e9f2fb",
+                      "tertiary-container": "#825400",
+                      "on-secondary": "#ffffff",
+                      "secondary": "#ae2f34",
+                      "secondary-fixed-dim": "#ffb3b0",
+                      "on-tertiary-fixed": "#2a1800",
+                      "background": "#f6faff",
+                      "on-tertiary-fixed-variant": "#643f00",
+                      "primary": "#920000",
+                      "inverse-primary": "#ffb4a8",
+                      "surface-bright": "#f6faff",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#ffdad8",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#ffcbc3",
+                      "on-surface-variant": "#5d3f3b",
+                      "surface-container-highest": "#dbe4ed",
+                      "tertiary": "#633e00",
+                      "primary-fixed": "#ffdad4",
+                      "primary-container": "#bf0000",
+                      "on-secondary-fixed": "#410006",
+                      "outline": "#926f69",
+                      "on-background": "#141d23",
+                      "surface-dim": "#d2dbe4",
+                      "on-surface": "#141d23",
+                      "primary-fixed-dim": "#ffb4a8",
+                      "surface-tint": "#c00201",
+                      "on-primary-fixed-variant": "#930000",
+                      "on-tertiary": "#ffffff",
+                      "surface-container": "#e6eff8",
+                      "surface": "#f6faff",
+                      "on-primary-fixed": "#410000",
+                      "surface-container-low": "#ecf5fe",
+                      "on-secondary-fixed-variant": "#8c1520"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "xl": "32px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "base": "4px",
+                      "lg": "24px",
+                      "margin-desktop": "48px",
+                      "md": "16px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "body-md": ["Noto Sans"],
+                      "body-lg": ["Noto Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-background flex justify-between items-center px-margin-mobile h-16 w-full fixed top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a friendly Japanese woman named Hanako, with soft natural lighting, a clean blurred background, wearing professional attire. The aesthetic is high-end, clean, and trustworthy, aligning with a premium corporate fintech brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4paSE0cyLqxLx4l1rrm2H8oEQ-z7GsJG-ZFCEOCLTx9Gh6t8xBNFQP7pnvjY6U7EgBc19apl0zGNlxbGWcwweTUoOmvlbx8lF_D9glgPfItvCobjv-DcmBvXDWSqMgW_YRG5GuKTv1Z90_DRquijSKC48ZmanMIorLTZKTQ6053KNX5Il8zcDKiv24V5f5F6mPs_X3IY86MLCx0tkY0F8Ka1HRqtNYsNV-oQkfUkTU4lsPtrnXkHC_yelxqEMdtaZTfr86QKn-g"/>
+</div>
+<span class="text-headline-lg-mobile font-headline-lg-mobile text-primary dark:text-on-primary-container tracking-tight">Rakuten</span>
+</div>
+<button class="hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</header>
+<main class="pt-20 px-margin-mobile max-w-lg mx-auto">
+<!-- Headline -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-lg">Your monthly loyalty progress</h1>
+<!-- Primary Progress Card (Bento Style) -->
+<section class="mb-lg">
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_12px_rgba(0,0,0,0.04)] overflow-hidden relative border border-surface-container-high">
+<div class="flex justify-between items-start mb-md">
+<div>
+<p class="font-label-lg text-label-lg text-secondary mb-xs uppercase tracking-wider">Current Status</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Diamond Member</h2>
+</div>
+<div class="bg-secondary-container/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+</div>
+<div class="mb-sm">
+<div class="flex justify-between text-label-sm font-label-sm mb-xs">
+<span class="text-on-surface-variant">85% to next milestone</span>
+<span class="text-primary font-bold">Level Up Soon</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full loyalty-gradient rounded-full w-[85%] relative">
+<div class="absolute inset-0 progress-shimmer"></div>
+</div>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant italic">Maintain your activity to secure your benefits for next month.</p>
+</div>
+</section>
+<!-- Metric Cards Grid -->
+<div class="grid grid-cols-2 gap-gutter mb-lg">
+<!-- Activities -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-surface-container-high flex flex-col items-center text-center">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-xs">Activities counted</p>
+<p class="font-display-lg text-display-lg text-on-surface">24</p>
+</div>
+<!-- Points -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-surface-container-high flex flex-col items-center text-center">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-tertiary">savings</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-xs">Points expected</p>
+<p class="font-display-lg text-display-lg text-on-surface">1,200</p>
+</div>
+<!-- Benefits -->
+<div class="col-span-2 bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl loyalty-gradient flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">card_giftcard</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">5 Benefits available</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Exclusive rewards ready for you</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+<!-- Recommended Action -->
+<section class="mb-lg">
+<h3 class="font-label-lg text-label-lg text-on-surface-variant mb-sm uppercase tracking-widest">Recommended</h3>
+<div class="bg-surface-container-highest/50 rounded-xl p-md border border-dashed border-outline-variant group cursor-pointer hover:bg-surface-container-highest transition-colors">
+<div class="flex gap-md items-start">
+<div class="mt-1">
+<span class="material-symbols-outlined text-secondary">tips_and_updates</span>
+</div>
+<div class="flex-1">
+<p class="font-label-lg text-label-lg text-on-surface mb-xs">Next action recommended</p>
+<p class="text-body-lg font-body-lg text-primary font-semibold">Review your saved home offer</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<div class="flex flex-col gap-md">
+<button class="w-full bg-primary text-white font-headline-md text-headline-md py-4 rounded-xl shadow-lg hover:opacity-90 active:scale-[0.98] transition-all">
+                View benefits
+            </button>
+<button class="w-full bg-transparent border border-outline-variant text-on-surface-variant font-label-lg text-label-lg py-3 rounded-xl hover:bg-surface-variant transition-colors">
+                History &amp; Insights
+            </button>
+</div>
+<!-- Decorative Spacer for Scrolling -->
+<div class="h-10"></div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-20 bg-surface/80 dark:bg-background/80 backdrop-blur-md shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-sm text-label-sm">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">card_giftcard</span>
+<span class="font-label-sm text-label-sm">Benefits</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Points</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-secondary-container font-bold relative after:content-[''] after:w-1 after:h-1 after:bg-primary after:rounded-full after:mt-1 scale-98 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm">Progress</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.bg-surface-container-lowest').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.98)';
+                card.style.transition = 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

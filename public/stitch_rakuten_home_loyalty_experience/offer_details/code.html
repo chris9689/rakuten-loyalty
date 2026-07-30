@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rakuten - Offer Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .bottom-nav-blur {
+            background: rgba(246, 250, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #F8F9FA;
+        }
+        .headline-font {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#dbe4ed",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e0e9f2",
+                        "on-secondary-container": "#6d0010",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffddb5",
+                        "inverse-surface": "#293138",
+                        "tertiary-fixed-dim": "#ffb957",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#e7bdb6",
+                        "on-tertiary-container": "#ffcf94",
+                        "secondary-container": "#ff6b6b",
+                        "inverse-on-surface": "#e9f2fb",
+                        "tertiary-container": "#825400",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#ae2f34",
+                        "secondary-fixed-dim": "#ffb3b0",
+                        "on-tertiary-fixed": "#2a1800",
+                        "background": "#f6faff",
+                        "on-tertiary-fixed-variant": "#643f00",
+                        "primary": "#920000",
+                        "inverse-primary": "#ffb4a8",
+                        "surface-bright": "#f6faff",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffdad8",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#ffcbc3",
+                        "on-surface-variant": "#5d3f3b",
+                        "surface-container-highest": "#dbe4ed",
+                        "tertiary": "#633e00",
+                        "primary-fixed": "#ffdad4",
+                        "primary-container": "#bf0000",
+                        "on-secondary-fixed": "#410006",
+                        "outline": "#926f69",
+                        "on-background": "#141d23",
+                        "surface-dim": "#d2dbe4",
+                        "on-surface": "#141d23",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "surface-tint": "#c00201",
+                        "on-primary-fixed-variant": "#930000",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#e6eff8",
+                        "surface": "#f6faff",
+                        "on-primary-fixed": "#410000",
+                        "surface-container-low": "#ecf5fe",
+                        "on-secondary-fixed-variant": "#8c1520"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "margin-desktop": "48px",
+                        "md": "16px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Noto Sans"],
+                        "body-lg": ["Noto Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-background sticky top-0 z-50 w-full h-16 flex justify-between items-center px-margin-mobile">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a sophisticated Japanese woman named Hanako with a warm smile, set against a soft minimalist grey background. The lighting is diffused and high-end, reflecting a premium corporate identity. She wears a modern, clean white professional top, embodying the spirit of Omotenashi and hospitality in a digital fintech context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxK-qwyjxHwa4YjpL-HfnERHd2HB5V0TUmF9wKeVtiSRCg3U_xLF0Kdw7g0R9EjCRAnHOUwwPPDB4KsWPtIa23GZpEs2-ebVU5y2Px92-rEgHNnLmH7K9tGvk3rwMrOgGIyu8UVOPJy1SkO7GP5QygekoFMwL5UVkcM6BahpVHWMX9WVWB-4rJmkaqmWduo4Jikdlila0S6pMCCgTZmR3sSoMzi7dvCcxjTSuWHol8iIZxZe_EzgR0QhpJ4AQg72hxh4hFEC7eCw"/>
+</div>
+<span class="text-headline-lg-mobile font-headline-lg-mobile text-primary dark:text-on-primary-container tracking-tight">Rakuten</span>
+</div>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform">
+            notifications
+        </button>
+</header>
+<!-- Main Content Area -->
+<main class="pb-32">
+<!-- Hero Section -->
+<section class="relative w-full h-[397px] overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+<img class="w-full h-full object-cover" data-alt="A luxurious minimalist interior featuring premium high-end household appliances. A sleek designer refrigerator, a modern espresso machine, and a high-tech oven are arranged in a pristine, bright kitchen with marble countertops. The scene is bathed in natural morning light, creating a calm and empowered atmosphere. The aesthetic is sophisticated, leveraging clean lines and a white-space-first approach to highlight the quality of the products." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKxg0kqG0If18Sp43h3Zfz50fFzdkaXL1Eq_MH6-kRJDSHZBAMwkzkagqpZO61MJH6LOkx7vsaGC-Z9XkoOHaz9_u14GMb_u2RAjTR-EktGWhPCERCMccWMxrBqfbNP5upX51LipufkwKMPSNLf9wm7w1bqjCJrDXTqwARQCiDlyFsAh19B2s4i79mowUISIIaA684mDBDauftjXDCvs0VVu_eTUhRc5zGy_wqm9DA9KhY_mNmsLFAN55J592aifmnjEEJ60SsMA"/>
+<div class="absolute bottom-0 left-0 p-6 z-20">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary text-white rounded-full mb-3 shadow-lg">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Premium Member Offer</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-white mb-2 leading-tight">Complete your new home setup</h1>
+</div>
+</section>
+<!-- Content Details -->
+<section class="px-margin-mobile -mt-4 relative z-30">
+<div class="bg-white rounded-xl p-6 shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-surface-container">
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Explore selected household value available with your Rakuten Card.</p>
+<button class="w-full bg-primary text-on-primary font-label-lg text-label-lg py-4 rounded-lg flex justify-center items-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all shadow-md" id="save-offer-btn">
+<span class="material-symbols-outlined" id="save-icon">bookmark</span>
+<span id="save-text">Save offer</span>
+</button>
+</div>
+</section>
+<!-- Categories Section -->
+<section class="mt-lg px-margin-mobile">
+<h2 class="font-headline-md text-headline-md mb-md flex items-center gap-2">
+                Eligible household categories
+                <span class="h-px flex-1 bg-surface-variant"></span>
+</h2>
+<div class="grid grid-cols-1 gap-4">
+<!-- Category Bento Card 1 -->
+<div class="flex items-center p-4 bg-white rounded-xl border border-surface-container-high hover:border-primary/20 transition-colors group">
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">kitchen</span>
+</div>
+<div class="ml-4 flex-1">
+<p class="font-label-lg text-label-lg">Kitchen</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Refrigerators, Ovens & Cookware</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<!-- Category Bento Card 2 -->
+<div class="flex items-center p-4 bg-white rounded-xl border border-surface-container-high hover:border-primary/20 transition-colors group">
+<div class="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">living</span>
+</div>
+<div class="ml-4 flex-1">
+<p class="font-label-lg text-label-lg">Living</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Air Purifiers & Smart Displays</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<!-- Category Bento Card 3 -->
+<div class="flex items-center p-4 bg-white rounded-xl border border-surface-container-high hover:border-primary/20 transition-colors group">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-on-surface group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">light</span>
+</div>
+<div class="ml-4 flex-1">
+<p class="font-label-lg text-label-lg">Lighting</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Designer Lamps & Smart Systems</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Terms Note -->
+<section class="mt-xl px-margin-mobile">
+<div class="p-4 bg-surface-container-low rounded-lg border border-dashed border-outline-variant">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-outline text-[20px]">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant italic">
+                        Offer availability and benefits are subject to programme rules. Terms and conditions apply for all cardholders.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-20 bg-surface/80 dark:bg-background/80 backdrop-blur-md shadow-sm">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-all duration-200 scale-98">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-all duration-200 scale-98">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-sm text-label-sm">Shop</span>
+</button>
+<!-- ACTIVE TAB: Benefits -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-secondary-container font-bold relative after:content-[''] after:w-1 after:h-1 after:bg-primary after:rounded-full after:mt-1 scale-98">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">card_giftcard</span>
+<span class="font-label-sm text-label-sm">Benefits</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-all duration-200 scale-98">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Points</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-all duration-200 scale-98">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm">Progress</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for the CTA
+        const saveBtn = document.getElementById('save-offer-btn');
+        const saveIcon = document.getElementById('save-icon');
+        const saveText = document.getElementById('save-text');
+        let isSaved = false;
+
+        saveBtn.addEventListener('click', () => {
+            isSaved = !isSaved;
+            if (isSaved) {
+                saveIcon.textContent = 'bookmark_added';
+                saveIcon.style.fontVariationSettings = "'FILL' 1";
+                saveText.textContent = 'Offer saved';
+                saveBtn.classList.replace('bg-primary', 'bg-tertiary');
+                
+                // Haptic-like effect
+                saveBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => saveBtn.style.transform = 'scale(1)', 100);
+            } else {
+                saveIcon.textContent = 'bookmark';
+                saveIcon.style.fontVariationSettings = "'FILL' 0";
+                saveText.textContent = 'Save offer';
+                saveBtn.classList.replace('bg-tertiary', 'bg-primary');
+            }
+        });
+
+        // Simple scroll reveal for cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.group').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+            observer.observe(card);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Rakuten Home Electronics</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#dbe4ed",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e0e9f2",
+                    "on-secondary-container": "#6d0010",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffddb5",
+                    "inverse-surface": "#293138",
+                    "tertiary-fixed-dim": "#ffb957",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#e7bdb6",
+                    "on-tertiary-container": "#ffcf94",
+                    "secondary-container": "#ff6b6b",
+                    "inverse-on-surface": "#e9f2fb",
+                    "tertiary-container": "#825400",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#ae2f34",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "on-tertiary-fixed": "#2a1800",
+                    "background": "#f6faff",
+                    "on-tertiary-fixed-variant": "#643f00",
+                    "primary": "#920000",
+                    "inverse-primary": "#ffb4a8",
+                    "surface-bright": "#f6faff",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#ffdad8",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#ffcbc3",
+                    "on-surface-variant": "#5d3f3b",
+                    "surface-container-highest": "#dbe4ed",
+                    "tertiary": "#633e00",
+                    "primary-fixed": "#ffdad4",
+                    "primary-container": "#bf0000",
+                    "on-secondary-fixed": "#410006",
+                    "outline": "#926f69",
+                    "on-background": "#141d23",
+                    "surface-dim": "#d2dbe4",
+                    "on-surface": "#141d23",
+                    "primary-fixed-dim": "#ffb4a8",
+                    "surface-tint": "#c00201",
+                    "on-primary-fixed-variant": "#930000",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#e6eff8",
+                    "surface": "#f6faff",
+                    "on-primary-fixed": "#410000",
+                    "surface-container-low": "#ecf5fe",
+                    "on-secondary-fixed-variant": "#8c1520"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "margin-desktop": "48px",
+                    "md": "16px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Noto Sans"],
+                    "body-lg": ["Noto Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f6faff;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .featured-span {
+            grid-column: span 2;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Custom scrollbar suppression */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-background flex justify-between items-center px-margin-mobile h-16 w-full docked full-width top-0 z-40 fixed">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-surface-container-high scale-95 active:scale-90 transition-transform cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A professional close-up profile portrait of a smiling Japanese woman with a clean, modern aesthetic. The background is a soft-focus minimalist office with bright natural lighting. The color palette features clean whites and soft neutrals, reflecting a premium corporate hospitality vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARa9gALT4xaftyQynEyc1jBqtGullYQZwKpqomxtaQWUbxab61iTai5h0RTOpmPckQxMjs8HTaxQ95YpbotHOEwbYvpycORQDKVrEl3N8IoHIEbouDnWFq01quEr0yGAaFxw6-i__zlnLcVA7-7Ys2mxzjr2xhjvPFdQMOgW1Zku6bssmZr3IWMJh9i4oMMZgh-k85n9A4RBuhPd4z8Wi1bSNmypnWPqnhJED9tTChZoJ8hykxWiD1sV3lSzlbvkmHUHzwRAA-nQ"/>
+</div>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-primary dark:text-on-primary-container tracking-tight">Rakuten</h1>
+</div>
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
+</button>
+</header>
+<main class="pt-20 pb-32 px-margin-mobile max-w-md mx-auto">
+<!-- Search Field -->
+<section class="mb-lg">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 bg-white border border-[#DEE2E6] rounded-xl font-body-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" readonly="" type="text" value="Electric kettle"/>
+<div class="absolute inset-y-0 right-4 flex items-center text-outline">
+<span class="material-symbols-outlined">tune</span>
+</div>
+</div>
+</section>
+<!-- Category Title -->
+<section class="mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Electronics for your home</h2>
+<p class="font-body-md text-on-surface-variant mt-1">Curated quality for modern living</p>
+</section>
+<!-- Bento Grid Products -->
+<div class="bento-grid">
+<!-- 1. Electric Kettle (Featured) -->
+<div class="featured-span bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A premium, sleek minimalist electric kettle made of matte white stainless steel with wood-grain accents. It is displayed on a clean marble countertop in a high-end, sun-drenched kitchen. The lighting is soft and airy, emphasizing the elegant design and high-quality craftsmanship of the appliance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmuSBOoVmWOM4oWB-kHQjhwLyGT4LYFg4SKnEDwTtHj-OSVYw6F0o7uEjaCx2iP3_enYFaeLxIVTXkEcSVba52tJv9fdaMCXUlOlrIbcYG82Xh_3ScYM4pANtukWSlZcl_2fve0yTpANURX9H3nJdW__FEM7Lae0rCnOLfeBXZ0T5LflwhiTRk23gee_bRlS9QT3FxpYqVd1azX2HCXiDkcIXo8R-WI0kamBpfG8CFplwOIHi8TDBi6wzScxflZ-BeH6w9GFZEag"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm shadow-sm">
+                        Recommended pick
+                    </div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md">Electric Kettle</h3>
+<p class="font-body-md text-on-surface-variant">Recommended household pick</p>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary">¥8,900</span>
+</div>
+</div>
+<button class="mt-md w-full bg-primary text-white py-3 rounded-lg font-label-lg text-label-lg hover:opacity-90 active:scale-98 transition-all">
+                        Add to Cart
+                    </button>
+</div>
+</div>
+<!-- 2. 40-inch TV -->
+<div class="bg-white rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="h-32 w-full">
+<img class="w-full h-full object-cover" data-alt="A modern 40-inch flat-screen television with ultra-thin bezels, displaying a breathtaking high-contrast landscape image. It is mounted on a clean, light gray wall in a minimalist living room. The aesthetic is professional and high-tech, with sharp edges and premium finishes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2q-eMDw8nVKCCkwk6rb3zOelJa1Q2evadSi40w22qWebZJHZl4n9gBGhRoZBDU0POSVn6dbPSQ1nNm266ttbp9plJLqOFwcNb5PkqAWFYA7oAHhsXewwtZZvyBtEeiuQ96koPKzJ0Iwgg7PUXkCb9jeH3V0N8d_OLG0gYgmRXZ1LpyL-AvvxlGt4BR1limbhLCQy_UXjP2hT9jd3T7vnsihPo7vnYB2ws8IynZy_cHQwZUZE-dV2j-Rag8_LS4ADZSH3yn9gMeQ"/>
+</div>
+<div class="p-sm flex-1 flex flex-col">
+<h3 class="font-label-lg text-label-lg truncate">40-inch TV</h3>
+<p class="font-headline-md text-headline-md text-primary mt-1">¥45,800</p>
+<div class="mt-auto flex justify-between items-center pt-2">
+<span class="text-label-sm text-tertiary-container font-medium flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                        </span>
+<span class="material-symbols-outlined text-outline">add_circle</span>
+</div>
+</div>
+</div>
+<!-- 3. Air Purifier -->
+<div class="bg-white rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="h-32 w-full">
+<img class="w-full h-full object-cover" data-alt="A cylindrical high-end air purifier with a sleek digital display on top, glowing with a soft blue light. It sits in a tranquil bedroom corner next to a green potted plant. The atmosphere is clean, healthy, and premium, with soft morning light filtering through thin curtains." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb8I2hUfmLErg5YxRWErCu64ZMUSK2b6npZnY_LLLz9qg6MoQihMQyNU5acsU9yvIBPgcGdDpsBTNlBT_lDbC6XtGNRRMurITl2djzDuFIi1Fmo_x7NtFWUkcHhmMy7dTOksAMEcxJKRiZHZYCbQqt3NhuPm1AA-tHk19IVmGdO5dW3kUrV0iSA5CJ9KJOgIwP0LsDDYwbz__w1Q-Dk0dVTLA-y0M49jeDiG2jLd4zbc8HBrn4bVqKC7Npr0-TjSQoj7K8Bx6vjw"/>
+</div>
+<div class="p-sm flex-1 flex flex-col">
+<h3 class="font-label-lg text-label-lg truncate">Air Purifier</h3>
+<p class="font-headline-md text-headline-md text-primary mt-1">¥22,000</p>
+<div class="mt-auto flex justify-between items-center pt-2">
+<span class="text-label-sm text-tertiary-container font-medium flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+                        </span>
+<span class="material-symbols-outlined text-outline">add_circle</span>
+</div>
+</div>
+</div>
+<!-- 4. Rice Cooker -->
+<div class="bg-white rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="h-32 w-full">
+<img class="w-full h-full object-cover" data-alt="A sophisticated Japanese rice cooker with a glossy charcoal black finish and a copper-colored pot inside. It is shown in a modern wooden-accented kitchen. The lighting is warm and inviting, highlighting the premium texture and advanced technology of the kitchen appliance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEYBJBdWLl34E08DqTxdTmWGBU20AXSRv4nzK6MkVfFfro_0GlxwmRVvonv77CaumiACLUqPpTldRy3gON-bbskrcnws_GrPq5u6lfwDZ8gJRn2Tcrk4yTUIQjavmreeZB4d2RbMfz_2k4kzxzRT_vWmVQUA8xowmZd-H-6aQh4gDLGURYGO1Ezx_cUotMFwBXdacdEsD2SSmG_fATSkScXUTzrN1Mpo1R9uTCFWqJIeMH0YR7x0kdRxd-4edHmuwFYnAyK60ebQ"/>
+</div>
+<div class="p-sm flex-1 flex flex-col">
+<h3 class="font-label-lg text-label-lg truncate">Rice Cooker</h3>
+<p class="font-headline-md text-headline-md text-primary mt-1">¥31,500</p>
+<div class="mt-auto flex justify-between items-center pt-2">
+<span class="text-label-sm text-tertiary-container font-medium flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" style="font-variation-settings: 'FILL' 1;">star</span> 4.7
+                        </span>
+<span class="material-symbols-outlined text-outline">add_circle</span>
+</div>
+</div>
+</div>
+<!-- 5. Lighting Set -->
+<div class="bg-white rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="h-32 w-full">
+<img class="w-full h-full object-cover" data-alt="A set of modern smart LED pendant lights with a matte black finish, hanging at different heights. They cast a warm, ambient glow in a contemporary dining area. The scene is elegant and stylish, emphasizing the atmosphere-enhancing quality of the lighting products." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuvjFsRkCWcA2hxqMtIB3wEZKtJYsd5J1KV2nJaYfVBUWstaGc73UMK3FI2KL3A_XnK0xtj66s735lyLHQx0H7eW132PEi2sY4sucMMuhJMR6-nt7PaqNs44EO42zZQjJosGJugGDMPT15qAT_3eWXD7eaa8cZl3EdvuPdsd4W9nHpqn2Rfi1ise7bZI3APK4Miyss3TvQUqKpzXJcF-jrENvCMeD1qJXBrKMZIFg_jchdfLo7Lb01qhP8fGmyNUXS6HxRw3Lhpg"/>
+</div>
+<div class="p-sm flex-1 flex flex-col">
+<h3 class="font-label-lg text-label-lg truncate">Lighting Set</h3>
+<p class="font-headline-md text-headline-md text-primary mt-1">¥15,200</p>
+<div class="mt-auto flex justify-between items-center pt-2">
+<span class="text-label-sm text-tertiary-container font-medium flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" style="font-variation-settings: 'FILL' 1;">star</span> 4.6
+                        </span>
+<span class="material-symbols-outlined text-outline">add_circle</span>
+</div>
+</div>
+</div>
+<!-- 6. Appliance Accessories (Horizontal Style Bento) -->
+<div class="featured-span bg-surface-container rounded-xl p-md flex items-center gap-4">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-white">
+<img class="w-full h-full object-cover" data-alt="A neat arrangement of high-quality appliance accessories including filters, cleaning kits, and replacement parts. The presentation is organized and clean, shot in a bright studio environment. The colors are neutral with small technical details visible." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz7cMOB7c8yD-SHXqSzFVxr5Vc2eTeH5b8vaXZd60R6xXEiADZJEesl_FMyxoRg5mNAFoz7wdtx_V-_shjkDNweTIy6iXSXQ1FO6yKwH0oc85gFF4JxRaF6ZsA-_0mSLMNSBcI6egoRQmZis8Ga4U5qtLHKMEuAttIeCqrxIz2gF-76iyUFe19C8QZUA_g81Y5DmjTSlmI_L5QCCQu6Q6um_PkvE8D_K9GEtplEnU1TgBgbQs1QKX41elwGmJqAkAcSKTYOJTb2A"/>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md">Appliance Accessories</h3>
+<p class="font-body-md text-on-surface-variant">Maintenance and upgrades</p>
+</div>
+<span class="material-symbols-outlined text-primary">arrow_forward_ios</span>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-20 bg-surface/80 dark:bg-background/80 backdrop-blur-md shadow-sm border-t border-transparent">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-secondary-container font-bold relative after:content-[''] after:w-1 after:h-1 after:bg-primary after:rounded-full after:mt-1" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-sm text-label-sm">Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">card_giftcard</span>
+<span class="font-label-sm text-label-sm mt-1">Benefits</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm mt-1">Points</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm mt-1">Progress</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for product items
+        document.querySelectorAll('.shadow-sm').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.98)';
+                card.style.transition = 'transform 0.1s ease';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

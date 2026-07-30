@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Rakuten - Home & Loyalty</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .loyalty-gradient {
+            background: linear-gradient(135deg, #ae2f34 0%, #ff6b6b 100%);
+        }
+        .points-card-shimmer {
+            background: linear-gradient(110deg, #920000 8%, #bf0000 18%, #920000 33%);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+        }
+        @keyframes shimmer {
+            to { background-position-x: -200%; }
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#dbe4ed",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#e0e9f2",
+                      "on-secondary-container": "#6d0010",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#ffddb5",
+                      "inverse-surface": "#293138",
+                      "tertiary-fixed-dim": "#ffb957",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#e7bdb6",
+                      "on-tertiary-container": "#ffcf94",
+                      "secondary-container": "#ff6b6b",
+                      "inverse-on-surface": "#e9f2fb",
+                      "tertiary-container": "#825400",
+                      "on-secondary": "#ffffff",
+                      "secondary": "#ae2f34",
+                      "secondary-fixed-dim": "#ffb3b0",
+                      "on-tertiary-fixed": "#2a1800",
+                      "background": "#f6faff",
+                      "on-tertiary-fixed-variant": "#643f00",
+                      "primary": "#920000",
+                      "inverse-primary": "#ffb4a8",
+                      "surface-bright": "#f6faff",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#ffdad8",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#ffcbc3",
+                      "on-surface-variant": "#5d3f3b",
+                      "surface-container-highest": "#dbe4ed",
+                      "tertiary": "#633e00",
+                      "primary-fixed": "#ffdad4",
+                      "primary-container": "#bf0000",
+                      "on-secondary-fixed": "#410006",
+                      "outline": "#926f69",
+                      "on-background": "#141d23",
+                      "surface-dim": "#d2dbe4",
+                      "on-surface": "#141d23",
+                      "primary-fixed-dim": "#ffb4a8",
+                      "surface-tint": "#c00201",
+                      "on-primary-fixed-variant": "#930000",
+                      "on-tertiary": "#ffffff",
+                      "surface-container": "#e6eff8",
+                      "surface": "#f6faff",
+                      "on-primary-fixed": "#410000",
+                      "surface-container-low": "#ecf5fe",
+                      "on-secondary-fixed-variant": "#8c1520"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "xl": "32px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "base": "4px",
+                      "lg": "24px",
+                      "margin-desktop": "48px",
+                      "md": "16px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "body-md": ["Noto Sans"],
+                      "body-lg": ["Noto Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "label-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                      "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "700" }],
+                      "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                      "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                      "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                      "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+                      "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-margin-mobile h-16 w-full fixed top-0 z-50 bg-surface dark:bg-background transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-high transition-transform active:scale-90 duration-200">
+<img class="w-full h-full object-cover" data-alt="A professional and friendly portrait of a Japanese woman named Hanako, smiling warmly with a soft natural background. The lighting is bright and airy, reflecting a premium corporate lifestyle aesthetic. The color palette features clean whites and soft neutrals, perfectly integrated into a modern high-end UI design with a focus on trust and approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS5kEycrkzCp5COvQSoiaxih754RbZjs5fb55Nd_GA0J3c3PKTJuy6gaThtoXItk0YgVpy51wvhU51zZU0xgVpG0DgWLt5Z8RSe4m_-EY5tUBvVpfU-uhf36tBKqE6-sef1p7xMSo2mq93_yS9bvoamGZLNQWVr-HRTy-FcceAaiEqQ_5IcjMuW4rreNDHLAhJrUr9YLhiO7MWzQ4xc4XTvLKy4_XCYhWCy29LrOIs5Zy70u_hUH7R5qHFDkazwR39XvaHaobNNg"/>
+</div>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-primary dark:text-on-primary-container tracking-tight">Rakuten</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined p-2 text-on-surface-variant dark:text-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-200">notifications</button>
+</div>
+</header>
+<main class="pt-20 pb-28 px-margin-mobile flex flex-col gap-lg max-w-md mx-auto">
+<!-- Greeting Section -->
+<section class="flex flex-col gap-xs">
+<p class="text-label-lg font-label-lg text-secondary">Good morning, Hanako</p>
+<h2 class="text-display-lg font-display-lg tracking-tight">Welcome back.</h2>
+</section>
+<!-- Points Balance Card -->
+<section class="relative overflow-hidden rounded-xl shadow-sm points-card-shimmer text-on-primary p-lg flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<p class="text-label-sm font-label-sm opacity-90 uppercase tracking-widest">Available Balance</p>
+<span class="material-symbols-outlined opacity-80" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-display-lg font-display-lg">12,450</span>
+<span class="text-label-lg font-label-lg font-bold">Points</span>
+</div>
+<div class="mt-base flex gap-2 overflow-x-auto no-scrollbar">
+<span class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-label-sm font-label-sm whitespace-nowrap">≈ ¥12,450 Value</span>
+<span class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-label-sm font-label-sm whitespace-nowrap">Expires: Dec 31</span>
+</div>
+</section>
+<!-- Loyalty Status Bento Item -->
+<section class="bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-surface-container-high flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<div class="flex flex-col">
+<p class="text-label-sm font-label-sm text-on-surface-variant">Your Rakuten loyalty status today</p>
+<h3 class="text-headline-md font-headline-md text-primary mt-1">Platinum Member</h3>
+</div>
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<p class="text-body-md font-body-md text-on-surface-variant">You’re close to your next benefit</p>
+<p class="text-label-sm font-label-sm font-bold text-primary">85%</p>
+</div>
+<!-- Progress Bar Component -->
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 85%"></div>
+</div>
+<p class="text-label-sm font-label-sm text-outline">Only 1,200 more points until Diamond status.</p>
+</div>
+</section>
+<!-- Benefits & Recommendations Grid -->
+<div class="grid grid-cols-2 gap-md">
+<!-- Active Benefits Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-surface-container-high shadow-sm flex flex-col gap-md active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">card_giftcard</span>
+</div>
+<div>
+<p class="text-headline-md font-headline-md text-on-surface">3</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">active benefits available</p>
+</div>
+<div class="flex items-center text-primary gap-1">
+<span class="text-label-sm font-label-sm">View all</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+</div>
+<!-- Points Growth Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-surface-container-high shadow-sm flex flex-col gap-md active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<div>
+<p class="text-headline-md font-headline-md text-on-surface">+12%</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">vs. last month</p>
+</div>
+<div class="flex items-center text-on-surface-variant gap-1">
+<span class="text-label-sm font-label-sm">Trends</span>
+<span class="material-symbols-outlined text-sm">show_chart</span>
+</div>
+</div>
+</div>
+<!-- Recommendation Teaser Section -->
+<section class="flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<h3 class="text-headline-md font-headline-md">Recommended for your home</h3>
+<button class="text-primary text-label-lg font-label-lg">See All</button>
+</div>
+<div class="group relative rounded-xl overflow-hidden aspect-[16/10] shadow-sm">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A cozy, sun-drenched modern living room in a Japanese minimalist style. High-quality furniture including a soft grey sofa, light wood tables, and lush green indoor plants. Warm morning light filters through sheer curtains, creating a calm and inviting atmosphere. The palette is dominated by neutral earth tones with a clean, premium commercial photography feel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBpYh3KHxIi18BylGmkr-PP-I0o6FKS6v5XV86jAwK2TcCrtrRycbvq-ogoay8JnANRJ8qnYe9Zetj0DAXFAAI7l6-fGOC9Y2D4pR5ZSGdOU0y6Hp5LTOANsCm8XGtMRLw9T7-1WxXqopGweYqgZNlnG_epQ1_BpiwFWZWMFN8Jdxs4m0EASdR48UK1ofK_jt0OCCnb9o7oEa_UQVdWtaINkMkR9wyyMrN5EbRC3CnRiWWQGDbXDuTK_lVAQf5cWAMKLRF_dcV9UQ')">
+</div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<!-- Card Content -->
+<div class="absolute bottom-0 left-0 p-lg text-white w-full">
+<div class="flex justify-between items-end">
+<div>
+<span class="bg-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-2 inline-block">Loyalty Exclusive</span>
+<h4 class="text-headline-md font-headline-md leading-tight">Elevate Your Living Space</h4>
+<p class="text-body-md opacity-90">Up to 15,000 points back on furniture</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-20 bg-surface/80 dark:bg-background/80 backdrop-blur-md shadow-sm">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-secondary-container font-bold relative after:content-[''] after:w-1 after:h-1 after:bg-primary after:rounded-full after:mt-1 scale-98 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<!-- Shop -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed scale-98 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-sm text-label-sm">Shop</span>
+</a>
+<!-- Benefits -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed scale-98 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">card_giftcard</span>
+<span class="font-label-sm text-label-sm">Benefits</span>
+</a>
+<!-- Points -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed scale-98 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Points</span>
+</a>
+<!-- Progress -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed scale-98 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-sm text-label-sm">Progress</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for points balance update animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const pointsEl = document.querySelector('.text-display-lg');
+            if (pointsEl && pointsEl.textContent === '12,450') {
+                let start = 12000;
+                let end = 12450;
+                let duration = 1500;
+                let range = end - start;
+                let current = start;
+                let increment = end > start ? 5 : -5;
+                let stepTime = Math.abs(Math.floor(duration / (range / 5)));
+                let timer = setInterval(function() {
+                    current += increment;
+                    pointsEl.textContent = current.toLocaleString();
+                    if (current == end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+        });
+    </script>
+</body></html>

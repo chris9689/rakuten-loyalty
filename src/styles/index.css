@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #141d23;
+  background: #eaf1f8;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Material Symbols icon font defaults. */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Hide scrollbars inside the phone frame while keeping scroll behaviour. */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Deep brand gradient used for the points balance hero (with shimmer). */
+.brand-gradient {
+  background: linear-gradient(135deg, #920000 0%, #bf0000 60%, #ff5f00 100%);
+}
+
+.brand-gradient-soft {
+  background: linear-gradient(160deg, rgba(146, 0, 0, 0.06) 0%, rgba(255, 107, 107, 0.06) 100%);
+}
+
+/* Loyalty status gradient (warm coral). */
+.loyalty-gradient {
+  background: linear-gradient(135deg, #ae2f34 0%, #ff6b6b 100%);
+}
+
+/* Animated shimmer for the points balance card. */
+.points-card-shimmer {
+  background: linear-gradient(110deg, #920000 8%, #bf0000 18%, #920000 33%);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Static deep-red balance card (no shimmer). */
+.points-card {
+  background: linear-gradient(135deg, #920000 0%, #bf0000 100%);
+}
+
+.glass {
+  background: rgba(246, 250, 255, 0.8);
+  backdrop-filter: blur(14px);
+}
+
+/* Respect reduced motion globally for CSS-driven transitions. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visibility for keyboard users. */
+:focus-visible {
+  outline: 2px solid #920000;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+

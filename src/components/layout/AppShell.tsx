@@ -1,0 +1,92 @@
+import { AnimatePresence, motion } from 'framer-motion';
+import { useDemo } from '@/app/DemoContext';
+import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
+import { screenByChapter } from '@/app/screens';
+import { screenVariants } from '@/animations/variants';
+import { MobileFrame } from '@/components/layout/MobileFrame';
+import { HeaderBar } from '@/components/layout/HeaderBar';
+import { BottomNav } from '@/components/layout/BottomNav';
+import { DecisionExplanationDrawer } from '@/components/decision-theatre/DecisionExplanationDrawer';
+import { BehindTheScenes } from '@/components/presenter/BehindTheScenes';
+import { PresenterControls } from '@/components/presenter/PresenterControls';
+import { Drawer } from '@/components/ui/Drawer';
+import { BrandLogo } from '@/components/ui/BrandLogo';
+
+/**
+ * Top-level shell: renders the phone frame with the active chapter screen,
+ * a clean chapter navigator, and a single reasoning drawer CTA.
+ */
+export function AppShell() {
+  useKeyboardShortcuts();
+  const { chapter, presenterOpen, setPresenterOpen } = useDemo();
+  const Screen = screenByChapter[chapter];
+
+  return (
+    <div className="min-h-full w-full">
+      <div className="mx-auto flex max-w-6xl flex-col items-stretch gap-6 px-4 py-6 lg:flex-row lg:items-start lg:justify-center lg:py-10">
+        {/* Phone */}
+        <div className="flex flex-1 flex-col items-center">
+          <BrandIntro />
+          <div className="mb-4 w-full max-w-[390px]" />
+          <MobileFrame>
+            <HeaderBar />
+
+            <AnimatePresence mode="wait">
+              <motion.main
+                key={chapter}
+                variants={screenVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="flex flex-1 flex-col overflow-hidden"
+              >
+                <Screen />
+              </motion.main>
+            </AnimatePresence>
+
+            <BottomNav />
+            <DecisionExplanationDrawer />
+          </MobileFrame>
+        </div>
+
+        <AnimatePresence>
+          {presenterOpen && (
+            <motion.aside
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 24 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="hidden w-[320px] shrink-0 self-stretch lg:block"
+            >
+              <div className="sticky top-10 max-h-[calc(100vh-5rem)] overflow-hidden rounded-3xl bg-canvas shadow-card ring-1 ring-black/[0.04]">
+                <PresenterControls onClose={() => setPresenterOpen(false)} />
+              </div>
+            </motion.aside>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <div className="lg:hidden">
+        <Drawer
+          open={presenterOpen}
+          onClose={() => setPresenterOpen(false)}
+          title="Presenter controls"
+          contained={false}
+        >
+          <PresenterControls onClose={() => setPresenterOpen(false)} />
+        </Drawer>
+      </div>
+
+      {/* Decisioning view lives outside customer app screens. */}
+      <BehindTheScenes />
+    </div>
+  );
+}
+
+function BrandIntro() {
+  return (
+    <div className="mb-4 flex max-w-[390px] flex-col items-center text-center">
+      <BrandLogo className="h-7" />
+    </div>
+  );
+}
