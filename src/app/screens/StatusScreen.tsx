@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useDemo } from '@/app/DemoContext';
 import { Screen } from './Screen';
 import { LoyaltyStatusCard } from '@/components/loyalty/LoyaltyStatusCard';
@@ -8,9 +8,9 @@ import { SearchBar } from '@/components/shopping/SearchBar';
 import { Icon } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Card';
-import { media } from '@/mock-data/media';
 import { settings } from '@/mock-data/settings';
 import { notifications } from '@/mock-data/notifications';
+import { cn } from '@/hooks/utils';
 
 const bankingActions = [
   { icon: 'swap_horiz', label: 'Transfer', tint: 'bg-primary-fixed', color: 'text-primary' },
@@ -24,6 +24,7 @@ export function StatusScreen() {
   const { isLinked, user, goToChapter, persona } = useDemo();
   const [query, setQuery] = useState('');
   const [notifDismissed, setNotifDismissed] = useState(false);
+  const [offerVariant, setOfferVariant] = useState<'points' | 'discount'>('points');
   const topNotif = notifications[0];
 
   return (
@@ -212,12 +213,12 @@ export function StatusScreen() {
           </div>
         )}
 
-        {/* Recommended for your home — linked only */}
+        {/* Recommended for you — linked only */}
         {isLinked && (
           <section className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <h3 className="font-heading text-base font-bold text-on-surface">
-                {persona === 'underEngaged' ? 'Your re-engagement offer' : 'Recommended for your home'}
+                {persona === 'underEngaged' ? 'Your re-engagement offer' : 'Recommended for you'}
               </h3>
               <button
                 type="button"
@@ -227,33 +228,89 @@ export function StatusScreen() {
                 See All
               </button>
             </div>
+
+            {/* Nitori merchant offer — A/B toggle */}
             <button
               type="button"
-              onClick={() => goToChapter(4)}
-              className="group relative aspect-[16/10] overflow-hidden rounded-2xl text-left shadow-card"
+              onClick={() => setOfferVariant(v => v === 'points' ? 'discount' : 'points')}
+              className="group relative w-full overflow-hidden rounded-2xl text-left shadow-card"
+              aria-label="Toggle offer variation"
             >
               <img
-                src={media.heroLiving}
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="/nitori_offer_1.jpg"
+                alt="Nitori"
+                className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 w-full p-5 text-white">
-                <div className="flex items-end justify-between">
-                  <div>
-                    <span className="mb-2 inline-block rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
-                      Loyalty Exclusive
-                    </span>
-                    <h4 className="font-heading text-lg font-bold leading-tight">
-                      Elevate Your Living Space
-                    </h4>
-                    <p className="text-xs opacity-90">
-                      Up to 15,000 points back on furniture
-                    </p>
-                  </div>
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-lg">
-                    <Icon name="shopping_bag" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+
+              {/* Top-left: merchant badge */}
+              <div className="absolute left-3 top-3">
+                <span className="rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink backdrop-blur-sm">
+                  Merchant partner offer
+                </span>
+              </div>
+
+              {/* Top-right: A/B variant pill */}
+              <div className="absolute right-3 top-3">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={offerVariant}
+                    initial={{ opacity: 0, y: -4, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.18 }}
+                    className={cn(
+                      'flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold',
+                      offerVariant === 'points'
+                        ? 'bg-primary text-white'
+                        : 'bg-amber-500 text-white',
+                    )}
+                  >
+                    {offerVariant === 'points' ? '✦ Variation A · Points' : '% Variation B · Discount'}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+
+              {/* Bottom content */}
+              <div className="absolute bottom-0 left-0 w-full p-4 text-white">
+                {/* Logo row */}
+                <div className="mb-2 flex items-center gap-2">
+                  <img
+                    src="/nitori_logo.jpg"
+                    alt="Nitori"
+                    className="h-5 w-auto rounded object-contain"
+                  />
+                  <span className="rounded-full bg-white/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide backdrop-blur-sm">
+                    Rakuten Card · Mastercard
                   </span>
+                </div>
+
+                {/* Animated offer content */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={offerVariant}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <h4 className="font-heading text-base font-bold leading-tight">
+                      {offerVariant === 'points'
+                        ? 'Earn 3× points on every purchase'
+                        : '5% off your next visit to Nitori'}
+                    </h4>
+                    <p className="mt-0.5 text-xs opacity-80">
+                      {offerVariant === 'points'
+                        ? 'Pay with your Rakuten Card Mastercard in-store or online'
+                        : 'Exclusive Rakuten Card Mastercard discount, no minimum spend'}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Swap hint */}
+                <div className="mt-2 flex items-center gap-1 opacity-50">
+                  <Icon name="swap_horiz" className="text-xs" />
+                  <span className="text-[10px]">Tap to switch offer variation</span>
                 </div>
               </div>
             </button>
