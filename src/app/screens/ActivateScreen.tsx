@@ -3,7 +3,6 @@ import { Screen } from './Screen';
 import { ActivationPrompt } from '@/components/loyalty/ActivationPrompt';
 import { Icon } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
-import { media } from '@/mock-data/media';
 const benefitRows = [
   {
     icon: 'local_shipping',
@@ -138,20 +137,50 @@ export function ActivateScreen() {
           </div>
         ))}
 
-        <button
-          type="button"
-          onClick={() => goToChapter(3)}
-          className="relative aspect-[16/9] overflow-hidden rounded-2xl text-left shadow-card"
-        >
-          <img src={media.heroLiving} alt="" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-0 p-4 text-white">
-            <span className="mb-1 inline-block rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest">
-              Member Exclusive
-            </span>
-            <h4 className="font-heading text-lg font-bold">Explore the Premium Collection</h4>
-          </div>
-        </button>
+        {/* Merchant offer teasers */}
+        <div className="grid grid-cols-3 gap-3">
+          {/* Expedia */}
+          <button
+            type="button"
+            onClick={() => goToChapter(3)}
+            className="group relative overflow-hidden rounded-2xl shadow-card"
+          >
+            <img src="/pickup_expedia-hotel.jpg" alt="Expedia" className="aspect-[1/1.2] w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+            <div className="absolute bottom-0 w-full p-2.5 text-center text-white">
+              <img src="/logo_280x60_expedia.hotels.jp.png" alt="Expedia" className="mx-auto h-4 w-auto mb-1" />
+              <p className="text-[10px] font-bold leading-tight">Hotel Deals</p>
+            </div>
+          </button>
+
+          {/* Spring Japan */}
+          <button
+            type="button"
+            onClick={() => goToChapter(3)}
+            className="group relative overflow-hidden rounded-2xl shadow-card"
+          >
+            <img src="/pickup_springjapan.jpg" alt="Spring Japan" className="aspect-[1/1.2] w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+            <div className="absolute bottom-0 w-full p-2.5 text-center text-white">
+              <p className="text-[10px] font-bold leading-tight">Spring Japan</p>
+              <p className="text-[9px] opacity-75">Travel Rewards</p>
+            </div>
+          </button>
+
+          {/* Uniqlo */}
+          <button
+            type="button"
+            onClick={() => goToChapter(3)}
+            className="group relative overflow-hidden rounded-2xl shadow-card"
+          >
+            <img src="/pickup_uniqlo.png" alt="Uniqlo" className="aspect-[1/1.2] w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+            <div className="absolute bottom-0 w-full p-2.5 text-center text-white">
+              <img src="/logo_280x60_uniqlo.com.png" alt="Uniqlo" className="mx-auto h-4 w-auto mb-1" />
+              <p className="text-[10px] font-bold leading-tight">Fashion & Basics</p>
+            </div>
+          </button>
+        </div>
 
         <div className="flex flex-col gap-2">
           <Button size="lg" fullWidth onClick={() => goToChapter(3)}>

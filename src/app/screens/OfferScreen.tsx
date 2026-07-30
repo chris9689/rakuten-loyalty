@@ -32,32 +32,29 @@ export function OfferScreen() {
         >
           <div className="relative">
             <img src={media.heroKitchen} alt="" className="aspect-[16/9] w-full object-cover" />
-            <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold text-ink backdrop-blur-sm">
-              Merchant partner offer
+            <span className="absolute bottom-3 left-3 rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-white">
+              Rakuten Ichiba
             </span>
-            <span className="absolute bottom-3 left-3 rounded-full bg-secondary-container px-3 py-1 text-[11px] font-bold text-on-secondary-container">
-              Exclusive offer
-            </span>
-            <span className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white shadow-float">
-              <Icon name="auto_awesome" filled />
+            <span className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary shadow-float">
+              <Icon name="local_offer" filled />
             </span>
           </div>
           <div className="p-5">
             <h3 className="font-heading text-xl font-bold text-on-surface">
-              Complete your new home setup
+              Extra points with Rakuten Card Mastercard
             </h3>
             <p className="mt-1 text-sm text-on-surface-variant">
-              Explore selected household value available with your Rakuten Card. Use your Rakuten
-              Card at checkout to access eligible value.
+              Enjoy bonus points on home appliances and televisions when you pay with your Rakuten
+              Card Mastercard. No minimum spend required.
             </p>
 
             <div className="mt-4 flex items-center gap-3 rounded-xl bg-surface-container-low p-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-secondary-container">
-                <Icon name="card_giftcard" filled className="text-on-secondary-container" />
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-fixed">
+                <Icon name="card_giftcard" filled className="text-primary" />
               </span>
               <div>
-                <p className="font-heading text-sm font-bold text-primary">Earn 5,000 points</p>
-                <p className="text-xs text-on-surface-variant">On selected household purchases</p>
+                <p className="font-heading text-sm font-bold text-primary">Earn 2× points</p>
+                <p className="text-xs text-on-surface-variant">On eligible home appliances and TVs</p>
               </div>
             </div>
 
