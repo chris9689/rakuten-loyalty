@@ -56,18 +56,15 @@ export function StatusScreen() {
 
         {/* Spending Summary card — linked only */}
         {isLinked && (
-          <section className="rounded-2xl bg-ink p-4 text-white shadow-card">
-            <div className="mb-2 flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-lg brand-gradient text-xs font-black text-white">✦</span>
-              <p className="text-[11px] font-bold uppercase tracking-wide text-white/60">Spending Summary</p>
-            </div>
-            <p className="text-sm leading-relaxed text-white/90">
-              You've spent <span className="font-bold text-white">¥42,000</span> on home setup — kitchen appliances, lighting, and furniture.
+          <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
+            <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Spending Summary</p>
+            <p className="mt-1.5 text-sm leading-relaxed text-on-surface">
+              You've spent <span className="font-bold">¥42,000</span> on home setup — kitchen appliances, lighting, and furniture.
             </p>
             <button
               type="button"
               onClick={() => goToChapter(4)}
-              className="mt-3 flex items-center gap-1 text-xs font-bold text-primary-fixed"
+              className="mt-3 flex items-center gap-1 text-xs font-bold text-primary"
             >
               See personalised rewards
               <Icon name="arrow_forward" className="text-sm" />

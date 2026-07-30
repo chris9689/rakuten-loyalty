@@ -2,17 +2,15 @@ import { motion } from 'framer-motion';
 import { useDemo } from '@/app/DemoContext';
 import { Screen } from './Screen';
 import { OfferConfirmation } from '@/components/offers/OfferConfirmation';
-import { ProductImage } from '@/components/shopping/ProductImage';
 import { Button } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
 import { Disclaimer } from '@/components/ui/Card';
 import { householdOffer } from '@/mock-data/offers';
-import { productById } from '@/mock-data/products';
 import { media } from '@/mock-data/media';
 
 const categories = [
-  { icon: 'kitchen', tint: 'bg-primary-fixed', color: 'text-primary', title: 'Kitchen', detail: 'Refrigerators, Ovens & Cookware' },
-  { icon: 'weekend', tint: 'bg-tertiary-fixed', color: 'text-tertiary-container', title: 'Living', detail: 'Air Purifiers & Smart Displays' },
+  { icon: 'kitchen', tint: 'bg-primary-fixed', color: 'text-primary', title: 'Home Appliances', detail: 'Refrigerators, Ovens & Cookware' },
+  { icon: 'tv', tint: 'bg-tertiary-fixed', color: 'text-tertiary-container', title: 'Televisions', detail: '4K Smart TVs & OLED Displays' },
   { icon: 'light', tint: 'bg-surface-container-high', color: 'text-on-surface-variant', title: 'Lighting', detail: 'Designer Lamps & Smart Systems' },
 ];
 
@@ -22,37 +20,10 @@ const categories = [
  */
 export function OfferScreen() {
   const { goToChapter, offerAccepted, acceptOffer, resetOffer } = useDemo();
-  const recent = [productById('p-cabinet'), productById('p-lighting')].filter(Boolean);
 
   return (
     <Screen chapterId={4}>
       <div className="flex flex-col gap-5 pt-2">
-        {/* Recent browsing */}
-        <section>
-          <div className="mb-2 flex items-center justify-between">
-            <h3 className="font-heading text-base font-bold text-on-surface">Recent Browsing</h3>
-            <button type="button" onClick={() => goToChapter(3)} className="text-sm font-semibold text-secondary">
-              See all
-            </button>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            {recent.map(
-              (p) =>
-                p && (
-                  <button
-                    key={p.id}
-                    type="button"
-                    onClick={() => goToChapter(3)}
-                    className="overflow-hidden rounded-2xl shadow-card"
-                    aria-label={`View ${p.name}`}
-                  >
-                    <ProductImage product={p} className="aspect-[4/3] w-full" emojiClass="text-4xl" />
-                  </button>
-                ),
-            )}
-          </div>
-        </section>
-
         {/* Contextual offer card */}
         <motion.section
           initial={{ opacity: 0, y: 14 }}

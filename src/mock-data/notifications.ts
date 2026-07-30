@@ -6,10 +6,10 @@ import type { AppNotification } from '@/types';
 export const notifications: AppNotification[] = [
   {
     id: 'n-1',
-    title: 'A moment worth a look',
-    body: 'We spotted household value that may suit your home setup.',
+    title: 'Relevant for you',
+    body: 'We spotted an offer for your card that may suit your needs.',
     time: 'Just now',
-    icon: '🏠',
+    icon: '🎁',
   },
   {
     id: 'n-2',
