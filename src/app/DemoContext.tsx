@@ -29,11 +29,6 @@ interface DemoContextValue {
   replayToken: number;
   replayDecision: () => void;
 
-  /** Explanation drawer visibility. */
-  explanationOpen: boolean;
-  toggleExplanation: () => void;
-  setExplanationOpen: (open: boolean) => void;
-
   /** Presenter panel visibility (hidden by default; reveal with "P"). */
   presenterOpen: boolean;
   setPresenterOpen: (open: boolean) => void;
@@ -63,7 +58,6 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   const [chapter, setChapter] = useState(1);
   const [persona, setPersonaState] = useState<PersonaState>('notLinked');
   const [replayToken, setReplayToken] = useState(0);
-  const [explanationOpen, setExplanationOpen] = useState(false);
   const [presenterOpen, setPresenterOpen] = useState(false);
   const [behindOpen, setBehindOpen] = useState(false);
   const [hasActivated, setHasActivated] = useState(false);
@@ -89,11 +83,6 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const replayDecision = useCallback(() => setReplayToken((t) => t + 1), []);
-  const toggleExplanation = useCallback(
-    () => setExplanationOpen((o) => !o),
-    [],
-  );
-
   const activate = useCallback(() => {
     setHasActivated(true);
     setPersonaState('linked');
@@ -108,7 +97,6 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     setChapter(1);
     setPersonaState('notLinked');
     setReplayToken((t) => t + 1);
-    setExplanationOpen(false);
     setHasActivated(false);
     setOfferAccepted(false);
   }, []);
@@ -137,9 +125,6 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     loyalty,
     replayToken,
     replayDecision,
-    explanationOpen,
-    toggleExplanation,
-    setExplanationOpen,
     presenterOpen,
     setPresenterOpen,
     togglePresenter,

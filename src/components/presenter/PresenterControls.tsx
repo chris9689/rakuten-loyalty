@@ -23,7 +23,7 @@ const personaModes = [
 
 /** The presenter control panel used on desktop side rail and mobile sheet. */
 export function PresenterControls({ onClose }: { onClose?: () => void }) {
-  const { toggleExplanation, toggleBehind, nextChapter, prevChapter, resetDemo, persona, setPersona } = useDemo();
+  const { toggleBehind, nextChapter, prevChapter, resetDemo, persona, setPersona } = useDemo();
 
   return (
     <div className="flex h-full flex-col gap-4 overflow-y-auto p-5 no-scrollbar">
@@ -82,12 +82,9 @@ export function PresenterControls({ onClose }: { onClose?: () => void }) {
         </Button>
       </div>
 
-      <div className="grid grid-cols-2 gap-1.5">
+      <div className="grid grid-cols-1 gap-1.5">
         <Button variant="primary" size="sm" onClick={toggleBehind}>
           Reasoning
-        </Button>
-        <Button variant="outline" size="sm" onClick={toggleExplanation}>
-          Explanation
         </Button>
       </div>
 

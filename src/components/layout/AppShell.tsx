@@ -6,7 +6,6 @@ import { screenVariants } from '@/animations/variants';
 import { MobileFrame } from '@/components/layout/MobileFrame';
 import { HeaderBar } from '@/components/layout/HeaderBar';
 import { BottomNav } from '@/components/layout/BottomNav';
-import { DecisionExplanationDrawer } from '@/components/decision-theatre/DecisionExplanationDrawer';
 import { BehindTheScenes } from '@/components/presenter/BehindTheScenes';
 import { PresenterControls } from '@/components/presenter/PresenterControls';
 import { Drawer } from '@/components/ui/Drawer';
@@ -45,7 +44,6 @@ export function AppShell() {
             </AnimatePresence>
 
             <BottomNav />
-            <DecisionExplanationDrawer />
           </MobileFrame>
         </div>
 
@@ -92,10 +90,6 @@ function BrandIntro() {
           Card
         </span>
       </div>
-      <p className="mt-1.5 text-[11px] font-semibold text-muted">
-        Loyalty experience personalised by{' '}
-        <span className="font-bold text-ink">Dynamic Yield</span>
-      </p>
     </div>
   );
 }

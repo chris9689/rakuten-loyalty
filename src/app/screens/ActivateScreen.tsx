@@ -27,7 +27,7 @@ const merchantOffers = [
     icon: 'flight_takeoff',
     title: 'Bonus points on flights',
     detail: 'Spring Japan flights with Rakuten Card.',
-    logo: undefined,
+    logo: '/logo_280x60_jp_ch_com.png',
   },
   {
     icon: 'shopping_bag',
@@ -158,24 +158,26 @@ export function ActivateScreen() {
           </div>
         ))}
 
-        <div className="rounded-2xl border-t-2 border-surface-container-high bg-surface-container-lowest/50 pt-4 px-4 pb-0">
-          <p className="text-[11px] font-bold uppercase tracking-wide text-muted mb-3">Partner Merchant Offers</p>
-          <div className="space-y-3 pb-4">
+        <div className="space-y-3">
+          <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Partner offers</p>
+          <div className="space-y-3">
             {merchantOffers.map((m) => (
               <div
                 key={m.title}
-                className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card flex items-start justify-between"
+                className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card"
               >
-                <div className="flex-1">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-fixed">
-                    <Icon name={m.icon} filled className="text-secondary" />
-                  </span>
-                  <p className="mt-3 font-heading text-sm font-bold text-on-surface">{m.title}</p>
-                  <p className="text-sm text-on-surface-variant">{m.detail}</p>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-fixed">
+                      <Icon name={m.icon} filled className="text-secondary" />
+                    </span>
+                    <p className="mt-3 font-heading text-sm font-bold text-on-surface">{m.title}</p>
+                    <p className="text-sm text-on-surface-variant">{m.detail}</p>
+                  </div>
+                  <div className="mt-0.5 flex h-9 shrink-0 items-center justify-center rounded-md border border-surface-container-high bg-white px-2">
+                    <img src={m.logo} alt={m.title} className="h-5 w-auto" />
+                  </div>
                 </div>
-                {m.logo && (
-                  <img src={m.logo} alt={m.title} className="h-8 w-auto shrink-0 ml-3" />
-                )}
               </div>
             ))}
           </div>
