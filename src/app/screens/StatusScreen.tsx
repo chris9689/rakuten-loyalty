@@ -89,11 +89,6 @@ export function StatusScreen() {
             </span>
             <span className="font-heading text-sm font-bold">Points</span>
           </div>
-          <div className="mt-1 flex justify-center">
-            <span className="flex items-center gap-1 whitespace-nowrap rounded-full bg-white/20 px-3 py-1 text-[11px] font-medium backdrop-blur-md">
-              <Icon name="credit_card" className="text-[13px]" /> Rakuten Card •••• 4820
-            </span>
-          </div>
         </motion.section>
 
         {/* Combined spending summary + link CTA — unlinked only */}

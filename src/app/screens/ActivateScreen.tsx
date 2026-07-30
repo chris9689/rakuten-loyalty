@@ -21,16 +21,19 @@ const merchantOffers = [
     icon: 'hotel',
     title: 'Extra points on hotel bookings',
     detail: 'Partner with Expedia for travel rewards.',
+    logo: '/logo_280x60_expedia.hotels.jp.png',
   },
   {
     icon: 'flight_takeoff',
     title: 'Bonus points on flights',
     detail: 'Spring Japan flights with Rakuten Card.',
+    logo: undefined,
   },
   {
     icon: 'shopping_bag',
     title: 'Rewards on fashion & basics',
     detail: 'Uniqlo purchases earn extra points.',
+    logo: '/logo_280x60_uniqlo.com.png',
   },
 ];
 
@@ -161,13 +164,18 @@ export function ActivateScreen() {
             {merchantOffers.map((m) => (
               <div
                 key={m.title}
-                className="rounded-xl border border-surface-container-high bg-white p-3 shadow-sm"
+                className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card flex items-start justify-between"
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary-fixed text-sm">
-                  <Icon name={m.icon} filled className="text-secondary" />
-                </span>
-                <p className="mt-2 font-heading text-xs font-bold text-on-surface">{m.title}</p>
-                <p className="text-xs text-on-surface-variant">{m.detail}</p>
+                <div className="flex-1">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-fixed">
+                    <Icon name={m.icon} filled className="text-secondary" />
+                  </span>
+                  <p className="mt-3 font-heading text-sm font-bold text-on-surface">{m.title}</p>
+                  <p className="text-sm text-on-surface-variant">{m.detail}</p>
+                </div>
+                {m.logo && (
+                  <img src={m.logo} alt={m.title} className="h-8 w-auto shrink-0 ml-3" />
+                )}
               </div>
             ))}
           </div>
