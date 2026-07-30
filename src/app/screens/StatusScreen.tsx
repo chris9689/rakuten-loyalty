@@ -10,15 +10,64 @@ import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Card';
 import { media } from '@/mock-data/media';
 import { settings } from '@/mock-data/settings';
+import { notifications } from '@/mock-data/notifications';
 
 /** Chapter 1 — Home / loyalty overview. */
 export function StatusScreen() {
-  const { isLinked, user, goToChapter } = useDemo();
+  const { isLinked, user, goToChapter, persona } = useDemo();
   const [query, setQuery] = useState('');
+  const [notifDismissed, setNotifDismissed] = useState(false);
+  const topNotif = notifications[0];
 
   return (
     <Screen chapterId={1}>
       <div className="flex flex-col gap-6 pt-2">
+
+        {/* Spend-triggered notification banner */}
+        {!notifDismissed && (
+          <div className="relative -mx-4 -mt-2 mb-0 flex items-start gap-3 bg-primary px-4 py-3 text-white">
+            <span className="mt-0.5 text-xl" aria-hidden>{topNotif.icon}</span>
+            <button
+              type="button"
+              className="min-w-0 flex-1 text-left"
+              onClick={() => { setNotifDismissed(true); goToChapter(4); }}
+            >
+              <p className="font-heading text-sm font-bold">{topNotif.title}</p>
+              <p className="text-xs opacity-90">{topNotif.body}</p>
+            </button>
+            <button
+              type="button"
+              onClick={() => setNotifDismissed(true)}
+              className="mt-0.5 shrink-0 opacity-70 hover:opacity-100"
+              aria-label="Dismiss notification"
+            >
+              ✕
+            </button>
+          </div>
+        )}
+
+        {/* AI Spending Insight card */}
+        <section className="rounded-2xl bg-ink p-4 text-white shadow-card">
+          <div className="mb-2 flex items-center gap-2">
+            <span className="flex h-6 w-6 items-center justify-center rounded-lg brand-gradient text-xs font-black text-white">✦</span>
+            <p className="text-[11px] font-bold uppercase tracking-wide text-white/60">AI spending summary · July 2026</p>
+          </div>
+          <p className="text-sm leading-relaxed text-white/90">
+            You've spent <span className="font-bold text-white">¥42,000</span> on home setup this month — kitchen appliances, lighting, and furniture.
+          </p>
+          <p className="mt-1.5 text-xs italic text-white/50">
+            Hypothesis: possible recent move or home renovation in progress.
+          </p>
+          <button
+            type="button"
+            onClick={() => goToChapter(isLinked ? 4 : 2)}
+            className="mt-3 flex items-center gap-1 text-xs font-bold text-primary-fixed"
+          >
+            {isLinked ? 'See personalised rewards' : 'Link to unlock personalised offers'}
+            <Icon name="arrow_forward" className="text-sm" />
+          </button>
+        </section>
+
         {/* Greeting */}
         <section className="flex flex-col gap-3">
           <div className="flex flex-col gap-1">
@@ -118,7 +167,11 @@ export function StatusScreen() {
         <section className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <h3 className="font-heading text-base font-bold text-on-surface">
-              {isLinked ? 'Recommended for your home' : 'Preview once you link'}
+              {persona === 'underEngaged'
+                ? 'Your re-engagement offer'
+                : isLinked
+                ? 'Recommended for your home'
+                : 'Preview once you link'}
             </h3>
             <button
               type="button"
@@ -161,6 +214,23 @@ export function StatusScreen() {
             </div>
           </button>
         </section>
+
+        {persona === 'underEngaged' && isLinked && (
+          <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
+            <div className="mb-2 flex items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-tertiary-fixed">
+                <Icon name="flag" filled className="text-tertiary-container text-lg" />
+              </span>
+              <p className="font-heading text-sm font-bold text-on-surface">Re-engagement opportunity</p>
+            </div>
+            <p className="text-xs text-on-surface-variant">
+              You're 3 activities away from Premium rank. Complete one more qualifying spend this month to unlock bonus points.
+            </p>
+            <Button className="mt-3" size="sm" fullWidth onClick={() => goToChapter(2)}>
+              View your activity offer →
+            </Button>
+          </section>
+        )}
 
         {!isLinked && (
           <Button size="lg" fullWidth onClick={() => goToChapter(2)}>

@@ -61,6 +61,9 @@ export function OfferScreen() {
         >
           <div className="relative">
             <img src={media.heroKitchen} alt="" className="aspect-[16/9] w-full object-cover" />
+            <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold text-ink backdrop-blur-sm">
+              Merchant partner offer
+            </span>
             <span className="absolute bottom-3 left-3 rounded-full bg-secondary-container px-3 py-1 text-[11px] font-bold text-on-secondary-container">
               Exclusive offer
             </span>

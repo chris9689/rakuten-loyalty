@@ -32,9 +32,9 @@ export function ActivationPrompt() {
           <Icon name="link" filled className="text-[30px] text-primary" />
         </span>
         <p className="font-heading text-xl font-bold text-on-surface">
-          Unlock personalised loyalty benefits
+          Connect your spending insights to personalised rewards
         </p>
-        <p className="mt-1 text-sm text-on-surface-variant">It only takes a moment to complete setup.</p>
+        <p className="mt-1 text-sm text-on-surface-variant">Your spending habits will shape offers and loyalty benefits in real time.</p>
       </div>
 
       <AnimatePresence mode="wait">
@@ -46,7 +46,7 @@ export function ActivationPrompt() {
                 Link your Rakuten member account
               </p>
               <p className="mt-1 text-xs text-on-surface-variant">
-                Connect your account to access personalised loyalty benefits.
+                Linking activates personalisation — your AI spending insights will start shaping offers for you.
               </p>
             </div>
             <Button fullWidth size="lg" className="mt-3" onClick={() => setState('review')}>
@@ -59,10 +59,9 @@ export function ActivationPrompt() {
           <motion.div key="review" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <div className="rounded-xl bg-surface-container-low p-3">
               <p className="text-xs font-semibold text-on-surface-variant">Step 2 of 3</p>
-              <p className="mt-1 font-heading text-sm font-bold text-on-surface">Review setup</p>
+              <p className="mt-1 font-heading text-sm font-bold text-on-surface">Review personalisation settings</p>
               <p className="mt-1 text-xs text-on-surface-variant">
-                Happy Program entry requires Rakuten Member Link Registration, linking Rakuten
-                Bank account information with Rakuten member information.
+                Happy Program entry requires Rakuten Member Link Registration. Once linked, your spending intelligence will surface relevant offers and loyalty rewards at the right moment.
               </p>
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
@@ -90,7 +89,7 @@ export function ActivationPrompt() {
               transition={{ repeat: Infinity, duration: 0.8, ease: 'linear' }}
               aria-hidden
             />
-            <span className="text-sm font-semibold text-on-surface">Completing setup…</span>
+              <span className="text-sm font-semibold text-on-surface">Activating personalised rewards…</span>
           </motion.div>
         )}
 
@@ -106,8 +105,8 @@ export function ActivationPrompt() {
                 <Icon name="check" className="text-lg" />
               </span>
               <div>
-                <p className="font-heading text-sm font-bold text-success">Account linked</p>
-                <p className="text-xs text-on-surface-variant">Personalised loyalty benefits are ready.</p>
+                <p className="font-heading text-sm font-bold text-success">Spending insights connected</p>
+                <p className="text-xs text-on-surface-variant">Personalised offers and loyalty benefits are now active.</p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-2">

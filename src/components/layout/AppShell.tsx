@@ -86,7 +86,16 @@ export function AppShell() {
 function BrandIntro() {
   return (
     <div className="mb-4 flex max-w-[390px] flex-col items-center text-center">
-      <BrandLogo className="h-7" />
+      <div className="flex items-center gap-2">
+        <BrandLogo className="h-7" />
+        <span className="rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+          Card
+        </span>
+      </div>
+      <p className="mt-1.5 text-[11px] font-semibold text-muted">
+        Loyalty experience personalised by{' '}
+        <span className="font-bold text-ink">Dynamic Yield</span>
+      </p>
     </div>
   );
 }
