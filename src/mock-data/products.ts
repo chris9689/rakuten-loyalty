@@ -1,11 +1,6 @@
 import type { Product } from '@/types';
 
-/**
- * Real stock photo (Pexels CDN, reachable and free to use) for a given photo
- * id, sized for a product tile. Falls back to an emoji tile if unreachable.
- */
-const stock = (id: number) =>
-  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop`;
+
 
 /**
  * Illustrative home-electronics catalogue used for the browsing chapter.
@@ -20,7 +15,7 @@ export const products: Product[] = [
     price: 8980,
     pointRate: 10,
     emoji: '🫖',
-    image: stock(324028),
+    image: '/products/electric_kettle.webp',
     tag: 'Trending',
     rating: 4.7,
     intentSignal: true,
@@ -32,7 +27,7 @@ export const products: Product[] = [
     price: 54800,
     pointRate: 8,
     emoji: '📺',
-    image: stock(1201996),
+    image: '/products/40_inch_smarttv.webp',
     tag: 'Home setup',
     rating: 4.6,
   },
@@ -43,7 +38,7 @@ export const products: Product[] = [
     price: 21800,
     pointRate: 7,
     emoji: '🍚',
-    image: stock(5700180),
+    image: '/products/rice_cooker.webp',
     rating: 4.8,
   },
   {
@@ -53,7 +48,7 @@ export const products: Product[] = [
     price: 18600,
     pointRate: 6,
     emoji: '🌬️',
-    image: stock(4239013),
+    image: '/products/air_purifier.webp',
     rating: 4.5,
   },
   {
@@ -63,7 +58,7 @@ export const products: Product[] = [
     price: 12400,
     pointRate: 9,
     emoji: '💡',
-    image: stock(112811),
+    image: '/products/warm_lightening_set.webp',
     tag: 'Home setup',
     rating: 4.4,
   },
@@ -74,7 +69,7 @@ export const products: Product[] = [
     price: 9800,
     pointRate: 6,
     emoji: '🪟',
-    image: stock(1643384),
+    image: '/products/curtain.webp',
     rating: 4.3,
   },
   {
@@ -84,7 +79,7 @@ export const products: Product[] = [
     price: 16800,
     pointRate: 7,
     emoji: '🗄️',
-    image: stock(1571460),
+    image: '/products/storage.webp',
     rating: 4.5,
   },
   {
@@ -94,7 +89,7 @@ export const products: Product[] = [
     price: 3480,
     pointRate: 5,
     emoji: '🧴',
-    image: stock(4108275),
+    image: '/products/dishwasher_care.webp',
     rating: 4.2,
   },
 ];
