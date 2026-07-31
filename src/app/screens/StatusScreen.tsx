@@ -234,7 +234,7 @@ export function StatusScreen() {
                 alt="Nitori"
                 className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
               {/* Top-left: merchant badge */}
               <div className="absolute left-3 top-3">
@@ -265,7 +265,10 @@ export function StatusScreen() {
               </div>
 
               {/* Bottom content */}
-              <div className="absolute bottom-0 left-0 w-full p-4 text-white">
+              <div className="absolute bottom-0 left-0 w-full text-white">
+                {/* Frosted gradient backing for text legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent rounded-b-2xl" />
+                <div className="relative p-4">
                 {/* Logo row */}
                 <div className="mb-2 flex items-center gap-2">
                   <img
@@ -304,6 +307,7 @@ export function StatusScreen() {
                 <div className="mt-2 flex items-center gap-1 opacity-50">
                   <Icon name="swap_horiz" className="text-xs" />
                   <span className="text-[10px]">Tap to switch offer variation</span>
+                </div>
                 </div>
               </div>
             </button>
