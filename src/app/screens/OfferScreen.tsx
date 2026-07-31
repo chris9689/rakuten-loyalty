@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
 import { Disclaimer } from '@/components/ui/Card';
 import { householdOffer } from '@/mock-data/offers';
-import { media } from '@/mock-data/media';
 
 const categories = [
   { icon: 'kitchen', tint: 'bg-primary-fixed', color: 'text-primary', title: 'Home Appliances', detail: 'Refrigerators, Ovens & Cookware' },
@@ -31,7 +30,7 @@ export function OfferScreen() {
           className="overflow-hidden rounded-2xl border border-surface-container-high bg-surface-container-lowest shadow-card"
         >
           <div className="relative">
-            <img src={media.heroKitchen} alt="" className="aspect-[16/9] w-full object-cover" />
+            <img src="/offer_teaser_rakuten_ichiba.png" alt="" className="aspect-[16/9] w-full object-cover" />
             <span className="absolute bottom-3 left-3 rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-white">
               Rakuten Ichiba
             </span>
