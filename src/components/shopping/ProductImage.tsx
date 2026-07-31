@@ -14,7 +14,7 @@ interface ProductImageProps {
 export function ProductImage({ product, className, emojiClass = 'text-5xl' }: ProductImageProps) {
   if (product.image) {
     return (
-      <div className={cn('relative overflow-hidden brand-gradient-soft', className)}>
+      <div className={cn('relative overflow-hidden bg-white', className)}>
         <img
           src={product.image}
           alt={product.name}
