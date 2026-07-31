@@ -18,7 +18,7 @@ export function ProductImage({ product, className, emojiClass = 'text-5xl' }: Pr
         <img
           src={product.image}
           alt={product.name}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain p-2"
         />
       </div>
     );
