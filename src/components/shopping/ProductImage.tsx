@@ -9,9 +9,20 @@ interface ProductImageProps {
 }
 
 /**
- * Emoji-first product media tile used for a cleaner prototype style.
+ * Product media tile — uses the product image when available, falls back to emoji.
  */
 export function ProductImage({ product, className, emojiClass = 'text-5xl' }: ProductImageProps) {
+  if (product.image) {
+    return (
+      <div className={cn('relative overflow-hidden brand-gradient-soft', className)}>
+        <img
+          src={product.image}
+          alt={product.name}
+          className="h-full w-full object-cover"
+        />
+      </div>
+    );
+  }
   return (
     <div className={cn('relative overflow-hidden brand-gradient-soft', className)}>
       <div className={cn('flex h-full w-full items-center justify-center', emojiClass)}>
