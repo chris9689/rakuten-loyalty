@@ -49,7 +49,7 @@ export function StatusScreen() {
         <section className="flex flex-col gap-3">
           <div className="flex flex-col gap-1">
             <p className="font-heading text-sm font-semibold text-secondary">
-              Good morning, {user.name.split(' ')[0]}
+              Good morning, {appUserProfile.name.split(' ')[0]}
             </p>
             <h2 className="font-heading text-3xl font-bold tracking-tight text-on-surface">
               Welcome back.
@@ -112,10 +112,10 @@ export function StatusScreen() {
               aria-label="Why is this shown now?"
             />
 
-            {/* Top-left: merchant badge */}
+            {/* Top-left: offer source badge */}
             <div className="absolute left-3 top-3 z-20">
               <span className="rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink backdrop-blur-sm">
-                Merchant partner offer
+                {offer.source}
               </span>
             </div>
 
@@ -139,6 +139,7 @@ export function StatusScreen() {
                       className="h-5 w-auto rounded object-contain"
                     />
                   )}
+                  <span className="text-[11px] font-bold">{offer.merchant}</span>
                   <span className="rounded-full bg-white/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide backdrop-blur-sm">
                     Rakuten Card · Mastercard
                   </span>

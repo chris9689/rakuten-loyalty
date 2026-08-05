@@ -186,6 +186,14 @@ export interface Chapter {
 export type AppUserId = 1 | 2 | 3 | 4;
 
 /**
+ * Source/network an offer originates from.
+ * - 'Rakuten Offer'    — merchant/product offer from the Rakuten ecosystem
+ * - 'Mastercard Offer' — card-linked benefit or cashback offer
+ * - 'MTR Offer'        — travel or partner-network offer
+ */
+export type OfferSource = 'Rakuten Offer' | 'Mastercard Offer' | 'MTR Offer';
+
+/**
  * A single "Why shown now" reason surfaced in the left panel when the
  * customer taps the recommended offer.
  */
@@ -204,17 +212,19 @@ export interface WhyReason {
  * offers from the same {@link AppUserOffer.category}.
  */
 export interface AppUserOffer {
-  /** Merchant / partner name shown on the card badge. */
+  /** Offer source/network (Rakuten / Mastercard / MTR). */
+  source: OfferSource;
+  /** Merchant / partner name shown on the card. */
   merchant: string;
   /** Offer category — used to complement the 2x2 grid offers. */
   category: string;
-  /** Offer mechanic, e.g. 'points', 'discount', 'cashback', 'bundle'. */
+  /** Offer mechanic, e.g. 'points', 'discount', 'cashback', 'travel'. */
   type: string;
-  /** Headline shown on the recommended offer card. */
+  /** Headline shown on the recommended offer card (usually the product). */
   headline: string;
-  /** Supporting line beneath the headline. */
+  /** Supporting line beneath the headline — typically the dynamic CTA copy. */
   subtitle: string;
-  /** Call-to-action button label. */
+  /** Short call-to-action button label. */
   cta: string;
   /** Hero image path served from /public. */
   image: string;
@@ -222,12 +232,26 @@ export interface AppUserOffer {
   logo?: string;
 }
 
+/**
+ * An alternative or supporting offer considered by the decisioning, shown in
+ * the "Why shown now" panel to narrate the ranking.
+ */
+export interface AlternativeOffer {
+  source: OfferSource;
+  /** Grouping label, e.g. "Alternative considered" or "Secondary offer". */
+  label: string;
+  /** Optional product / offer title. */
+  title?: string;
+  /** Dynamic CTA copy for the alternative. */
+  cta: string;
+}
+
 /** Full home-experience definition for one of the four app users. */
 export interface AppUserProfile {
   id: AppUserId;
-  /** Persona display name, e.g. "Hanako · New homeowner". */
+  /** Persona display name, e.g. "Hanako Tanaka". */
   name: string;
-  /** One-line situational context for the persona. */
+  /** One-line situational context for the persona (time / activity). */
   context: string;
   /** Illustrative points balance shown in the "Available balance" card. */
   pointsBalance: number;
@@ -242,8 +266,12 @@ export interface AppUserProfile {
    * four entries; typically from the same category as {@link offer}.
    */
   gridOffers: GridOffer[];
+  /** Narrative summary shown at the top of the "Why shown now" panel. */
+  whyShownNow: string;
   /** Ordered reasons shown in the "Why shown now" panel. */
   why: WhyReason[];
+  /** Alternative / supporting offers considered, shown in the panel. */
+  alternatives?: AlternativeOffer[];
 }
 
 /**
