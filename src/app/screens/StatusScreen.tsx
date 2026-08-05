@@ -203,9 +203,6 @@ export function StatusScreen() {
                       className="text-3xl text-on-surface-variant"
                     />
                   )}
-                  <span className="absolute right-2 top-2 rounded-full bg-primary px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
-                    {grid.type}
-                  </span>
                 </div>
 
                 {/* Copy */}
