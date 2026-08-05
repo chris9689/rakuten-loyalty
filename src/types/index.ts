@@ -268,6 +268,8 @@ export interface AppUserProfile {
    * four entries; typically from the same category as {@link offer}.
    */
   gridOffers: GridOffer[];
+  /** Optional heading for the 2x2 grid section (defaults to "Offers for you"). */
+  gridTitle?: string;
   /** Narrative summary shown at the top of the "Why shown now" panel. */
   whyShownNow: string;
   /** Ordered reasons shown in the "Why shown now" panel. */

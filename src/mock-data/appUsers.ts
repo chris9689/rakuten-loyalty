@@ -130,11 +130,12 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       },
     ],
     gridOffers: [
-      { merchant: 'Rakuten Fashion', title: 'Beachwear edit', type: 'discount', icon: 'beach_access' },
-      { merchant: 'Rakuten Fashion', title: 'Summer sandals', type: 'points', icon: 'footprint' },
-      { merchant: 'Rakuten Ichiba', title: 'Travel accessories', type: 'points', icon: 'luggage' },
-      { merchant: 'Rakuten Ichiba', title: 'Sun protection', type: 'cashback', icon: 'wb_sunny' },
+      { merchant: 'Starbucks', title: 'Starbucks coffee', type: 'points', image: '/kumiko-coffee-offer.jpg', logo: '/kumiko-coffee-offer-logo.webp' },
+      { merchant: 'SHEIN', title: 'Summer Essentials', type: 'discount', image: '/kumiko_shein-offer.png', logo: '/kumiko-shein-logo.png' },
+      { merchant: 'Rakuten Ichiba', title: 'Travel accessories', type: 'points', image: '/kumiko-travel-offer.webp', logo: '/kumiko-travel-offer-logo.png' },
+      { merchant: 'Rakuten Ichiba', title: 'Sun protection', type: 'cashback', image: '/kumiko-sun-offer.jpg', logo: '/kumiko-sun-offer-logo.png' },
     ],
+    gridTitle: 'More essentials for your trip',
     whyShownNow:
       "Kumiko is currently researching an Okinawa trip, and this dress matches her preferred style, size, and travel destination. The offer is available and relevant to her upcoming plans.",
     why: [

@@ -13,7 +13,7 @@ import { settings } from '@/mock-data/settings';
 export function StatusScreen() {
   const { user, goToChapter, appUserProfile, openWhy } = useDemo();
   const [query, setQuery] = useState('');
-  const { offers, gridOffers, spendingInsight } = appUserProfile;
+  const { offers, gridOffers, gridTitle, spendingInsight } = appUserProfile;
 
   return (
     <Screen chapterId={1}>
@@ -139,7 +139,7 @@ export function StatusScreen() {
         {/* Offers grid — 2x2 (complements the main offer's category) */}
         <section className="flex flex-col gap-3">
           <h3 className="font-heading text-base font-bold text-on-surface">
-            Offers for you
+            {gridTitle ?? 'Offers for you'}
           </h3>
           <div className="grid grid-cols-2 gap-3">
             {gridOffers.map((grid, i) => (
