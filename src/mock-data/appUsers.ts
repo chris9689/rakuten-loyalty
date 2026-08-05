@@ -1,10 +1,18 @@
-import type { AppUserId, AppUserProfile } from '@/types';
+import type { AppUserId, AppUserProfile, LoyaltyStatus } from '@/types';
+import { loyaltyStatus } from './loyalty';
+
+/** Build a per-user loyalty status by overriding the shared base. */
+const makeLoyalty = (overrides: Partial<LoyaltyStatus>): LoyaltyStatus => ({
+  ...loyaltyStatus,
+  ...overrides,
+});
 
 /**
  * Home-experience definitions for the four selectable app users.
  *
  * Each profile drives:
  *  - the greeting/context on the home screen,
+ *  - the "Available balance", "Loyalty status" and "Spending Insight" cards,
  *  - the main "Recommended for you" offer card,
  *  - the "Why shown now" panel that opens when the offer is tapped.
  *
@@ -18,6 +26,16 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
     id: 1,
     name: 'App user 1 · New homeowner',
     context: 'Recently moved in, actively setting up the home.',
+    pointsBalance: 12340,
+    loyalty: makeLoyalty({
+      rank: 'Premium',
+      nextRank: 'VIP',
+      progressToNext: 80,
+      monthlyActivitiesCounted: 16,
+      monthlyActivitiesTarget: 20,
+    }),
+    spendingInsight:
+      'Your home-setup spending is trending up. Linking more purchases this month can unlock extra point boosts on household categories.',
     offer: {
       merchant: 'Nitori',
       category: 'Home & living',
@@ -56,6 +74,16 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
     id: 2,
     name: 'App user 2 · Placeholder',
     context: 'Describe this persona’s situation and intent.',
+    pointsBalance: 3180,
+    loyalty: makeLoyalty({
+      rank: 'Advanced',
+      nextRank: 'Premium',
+      progressToNext: 45,
+      monthlyActivitiesCounted: 7,
+      monthlyActivitiesTarget: 15,
+    }),
+    spendingInsight:
+      'Your engagement has dipped recently. A few qualifying activities this month would keep you on track for the next status.',
     offer: {
       merchant: 'Merchant name',
       category: 'Category',
@@ -94,6 +122,16 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
     id: 3,
     name: 'App user 3 · Placeholder',
     context: 'Describe this persona’s situation and intent.',
+    pointsBalance: 28900,
+    loyalty: makeLoyalty({
+      rank: 'VIP',
+      nextRank: 'Super VIP',
+      progressToNext: 62,
+      monthlyActivitiesCounted: 22,
+      monthlyActivitiesTarget: 30,
+    }),
+    spendingInsight:
+      'You are among the top spenders this month. Premium campaigns and elevated point-back are available across your favourite categories.',
     offer: {
       merchant: 'Merchant name',
       category: 'Category',
@@ -132,6 +170,16 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
     id: 4,
     name: 'App user 4 · Placeholder',
     context: 'Describe this persona’s situation and intent.',
+    pointsBalance: 640,
+    loyalty: makeLoyalty({
+      rank: 'Basic',
+      nextRank: 'Advanced',
+      progressToNext: 20,
+      monthlyActivitiesCounted: 2,
+      monthlyActivitiesTarget: 12,
+    }),
+    spendingInsight:
+      'You are just getting started. Completing your first few qualifying activities unlocks your initial member benefits.',
     offer: {
       merchant: 'Merchant name',
       category: 'Category',

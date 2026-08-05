@@ -229,6 +229,12 @@ export interface AppUserProfile {
   name: string;
   /** One-line situational context for the persona. */
   context: string;
+  /** Illustrative points balance shown in the "Available balance" card. */
+  pointsBalance: number;
+  /** Per-user Happy Program loyalty status (rank, progress, activities). */
+  loyalty: LoyaltyStatus;
+  /** Per-user "Spending Insight" body copy. */
+  spendingInsight: string;
   /** The main targeted "Recommended for you" offer. */
   offer: AppUserOffer;
   /**

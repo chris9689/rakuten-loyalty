@@ -8,7 +8,6 @@ import {
 } from 'react';
 import type { PersonaState, User, LoyaltyStatus, AppUserId, AppUserProfile } from '@/types';
 import { hanako } from '@/mock-data/users';
-import { loyaltyStatus } from '@/mock-data/loyalty';
 import { appUserProfileById } from '@/mock-data/appUsers';
 import { totalChapters } from './chapters';
 
@@ -109,16 +108,18 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   const persona: PersonaState = 'linked';
   const isLinked = true;
 
+  const appUserProfile = appUserProfileById(appUser);
+
   const user = useMemo<User>(
     () => ({
       ...hanako,
       linkedHappyProgram: true,
+      pointsBalance: appUserProfile.pointsBalance,
     }),
-    [],
+    [appUserProfile.pointsBalance],
   );
 
-  const loyalty = loyaltyStatus;
-  const appUserProfile = appUserProfileById(appUser);
+  const loyalty = appUserProfile.loyalty;
 
   const value: DemoContextValue = {
     chapter,

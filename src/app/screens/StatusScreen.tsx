@@ -16,7 +16,7 @@ export function StatusScreen() {
   const [query, setQuery] = useState('');
   const [notifDismissed, setNotifDismissed] = useState(false);
   const topNotif = notifications[0];
-  const { offer, gridOffers } = appUserProfile;
+  const { offer, gridOffers, spendingInsight } = appUserProfile;
 
   return (
     <Screen chapterId={1}>
@@ -80,80 +80,6 @@ export function StatusScreen() {
             <span className="font-heading text-sm font-bold">Points</span>
           </div>
         </motion.section>
-
-        {/* Loyalty status card */}
-        <LoyaltyStatusCard />
-
-        {/* Spending Insight card */}
-        <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
-          <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Spending Insight</p>
-          <p className="mt-1.5 text-sm leading-relaxed text-on-surface">
-            Your recent activity can unlock more this month, including points boosts and member-only offers tailored to your card usage.
-          </p>
-          <button
-            type="button"
-            onClick={() => goToChapter(3)}
-            className="mt-3 flex items-center gap-1 text-xs font-bold text-primary"
-          >
-            Explore your member benefits
-            <Icon name="arrow_forward" className="text-sm" />
-          </button>
-        </section>
-
-        {/* Offers grid — 2x2 placeholder layout (complements the main offer's category) */}
-        <section className="flex flex-col gap-3">
-          <div className="flex items-center justify-between">
-            <h3 className="font-heading text-base font-bold text-on-surface">
-              Offers for you
-            </h3>
-            <span className="text-[11px] font-semibold text-on-surface-variant">
-              {offer.category} · App user {appUser}
-            </span>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            {gridOffers.map((grid, i) => (
-              <div
-                key={`${grid.merchant}-${grid.title}-${i}`}
-                className="flex aspect-square flex-col justify-between overflow-hidden rounded-2xl border border-surface-container-high bg-surface-container-lowest shadow-card"
-              >
-                {/* Media / icon header */}
-                <div className="relative flex h-20 items-center justify-center bg-surface-container-low">
-                  {grid.image ? (
-                    <img
-                      src={grid.image}
-                      alt={grid.merchant}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
-                    <Icon
-                      name={grid.icon ?? 'local_offer'}
-                      className="text-3xl text-on-surface-variant"
-                    />
-                  )}
-                  <span className="absolute right-2 top-2 rounded-full bg-primary px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
-                    {grid.type}
-                  </span>
-                </div>
-
-                {/* Copy */}
-                <div className="flex flex-1 flex-col justify-between p-3">
-                  <div>
-                    <p className="font-heading text-sm font-bold leading-tight text-on-surface">
-                      {grid.title}
-                    </p>
-                    <p className="mt-0.5 text-[11px] text-on-surface-variant">
-                      {grid.merchant}
-                    </p>
-                  </div>
-                  <span className="mt-2 flex items-center gap-1 text-primary">
-                    <span className="text-[11px] font-semibold">View offer</span>
-                    <Icon name="chevron_right" className="text-sm" />
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* Recommended for you — the main targeted offer for this app user */}
         <section className="flex flex-col gap-3">
@@ -246,7 +172,81 @@ export function StatusScreen() {
           </div>
         </section>
 
-        {/* Active benefits + Trends — moved to bottom of page */}
+        {/* Offers grid — 2x2 (complements the main offer's category) */}
+        <section className="flex flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <h3 className="font-heading text-base font-bold text-on-surface">
+              Offers for you
+            </h3>
+            <span className="text-[11px] font-semibold text-on-surface-variant">
+              {offer.category} · App user {appUser}
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            {gridOffers.map((grid, i) => (
+              <div
+                key={`${grid.merchant}-${grid.title}-${i}`}
+                className="flex aspect-square flex-col justify-between overflow-hidden rounded-2xl border border-surface-container-high bg-surface-container-lowest shadow-card"
+              >
+                {/* Media / icon header */}
+                <div className="relative flex h-20 items-center justify-center bg-surface-container-low">
+                  {grid.image ? (
+                    <img
+                      src={grid.image}
+                      alt={grid.merchant}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <Icon
+                      name={grid.icon ?? 'local_offer'}
+                      className="text-3xl text-on-surface-variant"
+                    />
+                  )}
+                  <span className="absolute right-2 top-2 rounded-full bg-primary px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
+                    {grid.type}
+                  </span>
+                </div>
+
+                {/* Copy */}
+                <div className="flex flex-1 flex-col justify-between p-3">
+                  <div>
+                    <p className="font-heading text-sm font-bold leading-tight text-on-surface">
+                      {grid.title}
+                    </p>
+                    <p className="mt-0.5 text-[11px] text-on-surface-variant">
+                      {grid.merchant}
+                    </p>
+                  </div>
+                  <span className="mt-2 flex items-center gap-1 text-primary">
+                    <span className="text-[11px] font-semibold">View offer</span>
+                    <Icon name="chevron_right" className="text-sm" />
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Loyalty status card — moved below the offers */}
+        <LoyaltyStatusCard />
+
+        {/* Spending Insight card — moved below the offers, per-user copy */}
+        <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
+          <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Spending Insight</p>
+          <p className="mt-1.5 text-sm leading-relaxed text-on-surface">
+            {spendingInsight}
+          </p>
+          <button
+            type="button"
+            onClick={() => goToChapter(3)}
+            className="mt-3 flex items-center gap-1 text-xs font-bold text-primary"
+          >
+            Explore your member benefits
+            <Icon name="arrow_forward" className="text-sm" />
+          </button>
+        </section>
+
+        {/* Active benefits + Trends — bottom of page */}
         <div className="grid grid-cols-2 gap-4">
           <button
             type="button"
