@@ -261,8 +261,8 @@ export interface AppUserProfile {
   loyalty: LoyaltyStatus;
   /** Per-user "Spending Insight" body copy. */
   spendingInsight: string;
-  /** The main targeted "Recommended for you" offer. */
-  offer: AppUserOffer;
+  /** The main targeted "Recommended for you" offers (one or more). */
+  offers: AppUserOffer[];
   /**
    * Complementary offers rendered in the 2x2 "Offers for you" grid. Expect
    * four entries; typically from the same category as {@link offer}.

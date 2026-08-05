@@ -13,7 +13,8 @@ import { settings } from '@/mock-data/settings';
 export function StatusScreen() {
   const { user, goToChapter, appUser, appUserProfile, openWhy } = useDemo();
   const [query, setQuery] = useState('');
-  const { offer, gridOffers, spendingInsight } = appUserProfile;
+  const { offers, gridOffers, spendingInsight } = appUserProfile;
+  const primaryOffer = offers[0];
 
   return (
     <Screen chapterId={1}>
@@ -55,84 +56,86 @@ export function StatusScreen() {
           </div>
         </motion.section>
 
-        {/* Recommended for you — the main targeted offer for this app user */}
-        <section className="flex flex-col gap-3">
-          <div className="flex items-center justify-between">
-            <h3 className="font-heading text-base font-bold text-on-surface">
-              {offer.title}
-            </h3>
-            <button
-              type="button"
-              onClick={() => goToChapter(2)}
-              className="shrink-0 text-sm font-semibold text-primary"
-            >
-              See All
-            </button>
-          </div>
-
-          <div className="group relative w-full overflow-hidden rounded-2xl text-left shadow-card">
-            <img
-              src={offer.image}
-              alt={offer.merchant}
-              className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-            {/* Full-card tap target opens the "Why shown now" panel */}
-            <button
-              type="button"
-              onClick={openWhy}
-              className="absolute inset-0 z-10"
-              aria-label="Why is this shown now?"
-            />
-
-            {/* Top-left: offer source badge */}
-            <div className="absolute left-3 top-3 z-20">
-              <span className="rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink backdrop-blur-sm">
-                {offer.source}
-              </span>
+        {/* Recommended for you — the main targeted offer(s) for this app user */}
+        {offers.map((offer, offerIndex) => (
+          <section key={`${offer.header}-${offerIndex}`} className="flex flex-col gap-3">
+            <div className="flex items-center justify-between">
+              <h3 className="font-heading text-base font-bold text-on-surface">
+                {offer.title}
+              </h3>
+              <button
+                type="button"
+                onClick={() => goToChapter(2)}
+                className="shrink-0 text-sm font-semibold text-primary"
+              >
+                See All
+              </button>
             </div>
 
-            {/* Top-right: offer type pill */}
-            <div className="absolute right-3 top-3 z-20">
-              <span className="flex items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
-                {offer.type}
-              </span>
-            </div>
+            <div className="group relative w-full overflow-hidden rounded-2xl text-left shadow-card">
+              <img
+                src={offer.image}
+                alt={offer.merchant}
+                className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-            {/* Bottom content */}
-            <div className="absolute bottom-0 left-0 z-20 w-full text-white">
-              <div className="absolute inset-0 rounded-b-2xl bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
-              <div className="relative p-4">
-                {/* Logo row */}
-                {offer.logo && (
-                  <div className="mb-2 flex items-center gap-2">
-                    <img
-                      src={offer.logo}
-                      alt={offer.merchant}
-                      className="h-6 w-auto rounded object-contain"
-                    />
+              {/* Full-card tap target opens the "Why shown now" panel */}
+              <button
+                type="button"
+                onClick={openWhy}
+                className="absolute inset-0 z-10"
+                aria-label="Why is this shown now?"
+              />
+
+              {/* Top-left: offer source badge */}
+              <div className="absolute left-3 top-3 z-20">
+                <span className="rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink backdrop-blur-sm">
+                  {offer.source}
+                </span>
+              </div>
+
+              {/* Top-right: offer type pill */}
+              <div className="absolute right-3 top-3 z-20">
+                <span className="flex items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+                  {offer.type}
+                </span>
+              </div>
+
+              {/* Bottom content */}
+              <div className="absolute bottom-0 left-0 z-20 w-full text-white">
+                <div className="absolute inset-0 rounded-b-2xl bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+                <div className="relative p-4">
+                  {/* Logo row */}
+                  {offer.logo && (
+                    <div className="mb-2 flex items-center gap-2">
+                      <img
+                        src={offer.logo}
+                        alt={offer.merchant}
+                        className="h-6 w-auto rounded object-contain"
+                      />
+                    </div>
+                  )}
+
+                  <h4 className="font-heading text-base font-bold leading-tight">
+                    {offer.header}
+                  </h4>
+
+                  {/* Actions */}
+                  <div className="mt-3 flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); goToChapter(3); }}
+                      className="relative z-30 rounded-full bg-white px-4 py-1.5 text-xs font-bold text-ink"
+                    >
+                      {offer.cta}
+                    </button>
                   </div>
-                )}
-
-                <h4 className="font-heading text-base font-bold leading-tight">
-                  {offer.header}
-                </h4>
-
-                {/* Actions */}
-                <div className="mt-3 flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); goToChapter(3); }}
-                    className="relative z-30 rounded-full bg-white px-4 py-1.5 text-xs font-bold text-ink"
-                  >
-                    {offer.cta}
-                  </button>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ))}
 
         {/* Offers grid — 2x2 (complements the main offer's category) */}
         <section className="flex flex-col gap-3">
@@ -141,7 +144,7 @@ export function StatusScreen() {
               Offers for you
             </h3>
             <span className="text-[11px] font-semibold text-on-surface-variant">
-              {offer.category} · App user {appUser}
+              {primaryOffer.category} · App user {appUser}
             </span>
           </div>
           <div className="grid grid-cols-2 gap-3">
