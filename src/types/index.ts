@@ -255,6 +255,8 @@ export interface AppUserProfile {
   context: string;
   /** Illustrative points balance shown in the "Available balance" card. */
   pointsBalance: number;
+  /** Card artwork path (in /public) shown in the balance card. */
+  cardImage: string;
   /** Per-user Happy Program loyalty status (rank, progress, activities). */
   loyalty: LoyaltyStatus;
   /** Per-user "Spending Insight" body copy. */

@@ -71,7 +71,7 @@ export function StatusScreen() {
             <p className="text-[11px] font-medium uppercase tracking-widest opacity-90">
               Available balance
             </p>
-            <CardFace name={user.name} compact className="w-24 shrink-0 shadow-md ring-1 ring-white/30" />
+            <CardFace name={appUserProfile.name} image={appUserProfile.cardImage} compact className="w-24 shrink-0 shadow-md ring-1 ring-white/30" />
           </div>
           <div className="flex items-baseline justify-center gap-2">
             <span className="font-heading text-3xl font-bold">

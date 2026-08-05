@@ -26,6 +26,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
     name: 'Hanako Tanaka',
     context: 'Tuesday, 11:30 AM · Recently compared kettles and bought several home items.',
     pointsBalance: 12340,
+    cardImage: '/cardface_mycolor_pinkbeige_row_Mastercard_rp_e_front_1347x851.png',
     loyalty: makeLoyalty({
       rank: 'Premium',
       nextRank: 'VIP',
@@ -92,6 +93,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
     name: 'Kumiko Sato',
     context: 'Planning a trip to Okinawa based on recent searches and browsing.',
     pointsBalance: 8760,
+    cardImage: '/cardface_mycolor_pastelblue.png',
     loyalty: makeLoyalty({
       rank: 'Advanced',
       nextRank: 'Premium',
@@ -150,6 +152,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
     name: 'Kenji Nakamura',
     context: 'Upcoming business trip to Osaka.',
     pointsBalance: 28900,
+    cardImage: '/cardface_mycolor_black.png',
     loyalty: makeLoyalty({
       rank: 'VIP',
       nextRank: 'Super VIP',
@@ -220,6 +223,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
     name: 'Yuki Yamamoto',
     context: '11:30 AM, Tokyo · near participating restaurants at lunchtime.',
     pointsBalance: 5420,
+    cardImage: '/cardface_mycolor_greige.png',
     loyalty: makeLoyalty({
       rank: 'Premium',
       nextRank: 'VIP',

@@ -6,6 +6,8 @@ interface CardFaceProps {
   className?: string;
   /** Compact removes the overlaid holder details for small placements. */
   compact?: boolean;
+  /** Card artwork path served from /public. */
+  image?: string;
 }
 
 /**
@@ -13,7 +15,12 @@ interface CardFaceProps {
  * with the cardholder name overlaid. Falls back to a gradient if the asset is
  * missing. The card artwork is a real brand asset provided in /public.
  */
-export function CardFace({ name, className, compact = false }: CardFaceProps) {
+export function CardFace({
+  name,
+  className,
+  compact = false,
+  image = '/cardface_mycolor_pinkbeige_row_Mastercard_rp_e_front_1347x851.png',
+}: CardFaceProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10, rotateX: 6 }}
@@ -25,7 +32,7 @@ export function CardFace({ name, className, compact = false }: CardFaceProps) {
       )}
     >
       <img
-        src="/cardface_mycolor_pinkbeige_row_Mastercard_rp_e_front_1347x851.png"
+        src={image}
         alt={`Rakuten Card for ${name}`}
         className="absolute inset-0 h-full w-full object-cover"
         onError={(e) => {
