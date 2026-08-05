@@ -11,7 +11,7 @@ export function SavedBenefitsScreen() {
   const { goToChapter } = useDemo();
 
   return (
-    <Screen chapterId={7}>
+    <Screen chapterId={6}>
       <div className="flex flex-col gap-4 pt-2">
         <h2 className="font-heading text-2xl font-bold text-on-surface">Your saved benefits</h2>
         <p className="text-sm text-on-surface-variant">
@@ -31,10 +31,10 @@ export function SavedBenefitsScreen() {
             </div>
           </div>
           <div className="mt-3 grid grid-cols-2 gap-2">
-            <Button size="md" fullWidth onClick={() => goToChapter(3)}>
+            <Button size="md" fullWidth onClick={() => goToChapter(2)}>
               Continue shopping
             </Button>
-            <Button variant="outline" size="md" fullWidth onClick={() => goToChapter(5)}>
+            <Button variant="outline" size="md" fullWidth onClick={() => goToChapter(4)}>
               View points options
             </Button>
           </div>
@@ -42,7 +42,7 @@ export function SavedBenefitsScreen() {
 
         <button
           type="button"
-          onClick={() => goToChapter(6)}
+          onClick={() => goToChapter(5)}
           className="flex items-center justify-between rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 text-left shadow-card"
         >
           <div>

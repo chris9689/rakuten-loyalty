@@ -7,10 +7,10 @@ import { Button } from '@/components/ui/Button';
 export function PointsScreen() {
   const { goToChapter } = useDemo();
   return (
-    <Screen chapterId={5}>
+    <Screen chapterId={4}>
       <div className="pt-2">
         <PointsUtilityCard />
-        <Button variant="outline" className="mt-5" fullWidth onClick={() => goToChapter(6)}>
+        <Button variant="outline" className="mt-5" fullWidth onClick={() => goToChapter(5)}>
           View my monthly progress
         </Button>
       </div>

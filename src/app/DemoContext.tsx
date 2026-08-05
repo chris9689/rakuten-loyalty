@@ -8,22 +8,31 @@ import {
 } from 'react';
 import type { PersonaState, User, LoyaltyStatus } from '@/types';
 import { hanako } from '@/mock-data/users';
-import { loyaltyStatus, underEngagedStatus } from '@/mock-data/loyalty';
+import { loyaltyStatus } from '@/mock-data/loyalty';
 import { totalChapters } from './chapters';
 
+/** Selectable app-user profiles for the different home experiences. */
+export type AppUser = 1 | 2 | 3 | 4;
+
 interface DemoContextValue {
-  /** Current chapter (1-10). */
+  /** Current chapter (1-6). */
   chapter: number;
   goToChapter: (id: number) => void;
   nextChapter: () => void;
   prevChapter: () => void;
 
-  /** Persona state and derived data. */
+  /**
+   * Fixed persona used by the decisioning mock. The card is always linked
+   * in this build, so this is constant.
+   */
   persona: PersonaState;
-  setPersona: (p: PersonaState) => void;
   user: User;
   isLinked: boolean;
   loyalty: LoyaltyStatus;
+
+  /** Selected app-user profile (placeholder for home experience variants). */
+  appUser: AppUser;
+  setAppUser: (u: AppUser) => void;
 
   /** Decision animation replay token — bump to re-trigger animations. */
   replayToken: number;
@@ -39,10 +48,6 @@ interface DemoContextValue {
   setBehindOpen: (open: boolean) => void;
   toggleBehind: () => void;
 
-  /** Whether the demo persona has linked during this session. */
-  hasActivated: boolean;
-  activate: () => void;
-
   /** Whether the winning offer has been accepted (CTA). */
   offerAccepted: boolean;
   acceptOffer: () => void;
@@ -56,11 +61,10 @@ const DemoContext = createContext<DemoContextValue | null>(null);
 
 export function DemoProvider({ children }: { children: ReactNode }) {
   const [chapter, setChapter] = useState(1);
-  const [persona, setPersonaState] = useState<PersonaState>('notLinked');
+  const [appUser, setAppUser] = useState<AppUser>(1);
   const [replayToken, setReplayToken] = useState(0);
   const [presenterOpen, setPresenterOpen] = useState(false);
   const [behindOpen, setBehindOpen] = useState(false);
-  const [hasActivated, setHasActivated] = useState(false);
   const [offerAccepted, setOfferAccepted] = useState(false);
 
   const goToChapter = useCallback((id: number) => {
@@ -76,17 +80,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     [],
   );
 
-  const setPersona = useCallback((p: PersonaState) => {
-    setPersonaState(p);
-    if (p === 'linked' || p === 'underEngaged') setHasActivated(true);
-    if (p === 'notLinked') setHasActivated(false);
-  }, []);
-
   const replayDecision = useCallback(() => setReplayToken((t) => t + 1), []);
-  const activate = useCallback(() => {
-    setHasActivated(true);
-    setPersonaState('linked');
-  }, []);
 
   const acceptOffer = useCallback(() => setOfferAccepted(true), []);
   const resetOffer = useCallback(() => setOfferAccepted(false), []);
@@ -95,23 +89,24 @@ export function DemoProvider({ children }: { children: ReactNode }) {
 
   const resetDemo = useCallback(() => {
     setChapter(1);
-    setPersonaState('notLinked');
+    setAppUser(1);
     setReplayToken((t) => t + 1);
-    setHasActivated(false);
     setOfferAccepted(false);
   }, []);
 
-  const isLinked = persona !== 'notLinked' || hasActivated;
+  // The card is always connected in this build.
+  const persona: PersonaState = 'linked';
+  const isLinked = true;
 
   const user = useMemo<User>(
     () => ({
       ...hanako,
-      linkedHappyProgram: isLinked,
+      linkedHappyProgram: true,
     }),
-    [isLinked],
+    [],
   );
 
-  const loyalty = persona === 'underEngaged' ? underEngagedStatus : loyaltyStatus;
+  const loyalty = loyaltyStatus;
 
   const value: DemoContextValue = {
     chapter,
@@ -119,10 +114,11 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     nextChapter,
     prevChapter,
     persona,
-    setPersona,
     user,
     isLinked,
     loyalty,
+    appUser,
+    setAppUser,
     replayToken,
     replayDecision,
     presenterOpen,
@@ -131,8 +127,6 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     behindOpen,
     setBehindOpen,
     toggleBehind,
-    hasActivated,
-    activate,
     offerAccepted,
     acceptOffer,
     resetOffer,

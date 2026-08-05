@@ -12,10 +12,10 @@ interface Tab {
 
 const tabs: Tab[] = [
   { label: 'Home', icon: 'home', chapter: 1, range: [1] },
-  { label: 'Shop', icon: 'shopping_bag', chapter: 3, range: [3, 4] },
-  { label: 'Benefits', icon: 'card_giftcard', chapter: 2, range: [2, 7] },
-  { label: 'Points', icon: 'account_balance_wallet', chapter: 5, range: [5] },
-  { label: 'Progress', icon: 'trending_up', chapter: 6, range: [6] },
+  { label: 'Shop', icon: 'shopping_bag', chapter: 2, range: [2, 3] },
+  { label: 'Benefits', icon: 'card_giftcard', chapter: 6, range: [6] },
+  { label: 'Points', icon: 'account_balance_wallet', chapter: 4, range: [4] },
+  { label: 'Progress', icon: 'trending_up', chapter: 5, range: [5] },
 ];
 
 /** Bottom tab bar (glassmorphism). Tabs map to key chapters in the journey. */

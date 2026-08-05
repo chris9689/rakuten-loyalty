@@ -1,32 +1,21 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useDemo } from '@/app/DemoContext';
+import { useDemo, type AppUser } from '@/app/DemoContext';
 import { DemoChapterStepper } from './DemoChapterStepper';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/hooks/utils';
 
-const personaModes = [
-  {
-    key: 'notLinked' as const,
-    label: 'Without DY',
-    detail: 'No link · no personalisation',
-  },
-  {
-    key: 'linked' as const,
-    label: 'With DY',
-    detail: 'Linked · full personalisation',
-  },
-  {
-    key: 'underEngaged' as const,
-    label: 'Re-engagement',
-    detail: 'Linked · re-engagement offer wins',
-  },
+const appUsers: { key: AppUser; label: string; detail: string }[] = [
+  { key: 1, label: 'App user 1', detail: 'Home experience A' },
+  { key: 2, label: 'App user 2', detail: 'Home experience B' },
+  { key: 3, label: 'App user 3', detail: 'Home experience C' },
+  { key: 4, label: 'App user 4', detail: 'Home experience D' },
 ];
 
 /** The presenter control panel used on desktop side rail and mobile sheet. */
 export function PresenterControls({ onClose }: { onClose?: () => void }) {
-  const { toggleBehind, nextChapter, prevChapter, resetDemo, persona, setPersona } = useDemo();
-  const [showPersonaModes, setShowPersonaModes] = useState(false);
+  const { toggleBehind, nextChapter, prevChapter, resetDemo, appUser, setAppUser } = useDemo();
+  const [showAppUsers, setShowAppUsers] = useState(false);
 
   return (
     <div className="flex h-full flex-col gap-4 overflow-y-auto p-5 no-scrollbar">
@@ -49,20 +38,20 @@ export function PresenterControls({ onClose }: { onClose?: () => void }) {
         )}
       </div>
 
-      {/* Persona / DY mode switcher */}
+      {/* App user switcher */}
       <div className="rounded-2xl border border-black/[0.08] bg-white/75">
         <button
           type="button"
-          onClick={() => setShowPersonaModes((open) => !open)}
-          aria-expanded={showPersonaModes}
+          onClick={() => setShowAppUsers((open) => !open)}
+          aria-expanded={showAppUsers}
           className="flex w-full items-center justify-between rounded-2xl px-3 py-2 text-left"
         >
-          <span className="text-[11px] font-bold uppercase tracking-wide text-muted">Persona / DY mode</span>
-          <span className="text-xs font-bold text-rakuten-red">{showPersonaModes ? 'Hide' : 'Show'}</span>
+          <span className="text-[11px] font-bold uppercase tracking-wide text-muted">App user</span>
+          <span className="text-xs font-bold text-rakuten-red">{showAppUsers ? 'Hide' : 'Show'}</span>
         </button>
 
         <AnimatePresence initial={false}>
-          {showPersonaModes && (
+          {showAppUsers && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
@@ -71,13 +60,13 @@ export function PresenterControls({ onClose }: { onClose?: () => void }) {
               className="overflow-hidden"
             >
               <div className="flex flex-col gap-1.5 px-3 pb-3">
-                {personaModes.map((m) => {
-                  const active = persona === m.key;
+                {appUsers.map((m) => {
+                  const active = appUser === m.key;
                   return (
                     <button
                       key={m.key}
                       type="button"
-                      onClick={() => setPersona(m.key)}
+                      onClick={() => setAppUser(m.key)}
                       aria-pressed={active}
                       className={cn(
                         'flex items-center justify-between rounded-xl px-3 py-2 text-left transition-colors',

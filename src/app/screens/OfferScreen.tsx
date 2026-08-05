@@ -21,7 +21,7 @@ export function OfferScreen() {
   const { goToChapter, offerAccepted, acceptOffer, resetOffer } = useDemo();
 
   return (
-    <Screen chapterId={4}>
+    <Screen chapterId={3}>
       <div className="flex flex-col gap-5 pt-2">
         {/* Contextual offer card */}
         <motion.section
@@ -103,7 +103,7 @@ export function OfferScreen() {
           </Disclaimer>
         </div>
 
-        <Button variant="outline" fullWidth onClick={() => goToChapter(5)}>
+        <Button variant="outline" fullWidth onClick={() => goToChapter(4)}>
           Continue
         </Button>
       </div>
@@ -112,11 +112,11 @@ export function OfferScreen() {
         open={offerAccepted}
         onContinueShopping={() => {
           resetOffer();
-          goToChapter(3);
+          goToChapter(2);
         }}
         onViewSavedBenefits={() => {
           resetOffer();
-          goToChapter(7);
+          goToChapter(6);
         }}
         title={householdOffer.title}
       />

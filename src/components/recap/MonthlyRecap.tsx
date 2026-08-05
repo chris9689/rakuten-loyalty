@@ -68,7 +68,7 @@ export function MonthlyRecap() {
       {/* Benefits row */}
       <button
         type="button"
-        onClick={() => goToChapter(2)}
+        onClick={() => goToChapter(6)}
         className="flex items-center gap-4 rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 text-left shadow-card"
       >
         <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-white">
@@ -88,7 +88,7 @@ export function MonthlyRecap() {
         </p>
         <button
           type="button"
-          onClick={() => goToChapter(4)}
+          onClick={() => goToChapter(3)}
           className="flex w-full items-center gap-3 rounded-xl border border-dashed border-outline-variant bg-surface-container-low p-4 text-left"
         >
           <Icon name="tips_and_updates" filled className="text-primary" />
@@ -105,10 +105,10 @@ export function MonthlyRecap() {
       </section>
 
       <div className="flex flex-col gap-2">
-        <Button size="lg" fullWidth onClick={() => goToChapter(2)}>
+        <Button size="lg" fullWidth onClick={() => goToChapter(6)}>
           View benefits
         </Button>
-        <Button variant="outline" size="md" fullWidth onClick={() => goToChapter(5)}>
+        <Button variant="outline" size="md" fullWidth onClick={() => goToChapter(4)}>
           History &amp; Insights
         </Button>
       </div>

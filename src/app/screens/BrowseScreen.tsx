@@ -26,10 +26,10 @@ export function BrowseScreen() {
     });
   }, [query]);
 
-  const handleSelect = (_p: Product) => goToChapter(4);
+  const handleSelect = (_p: Product) => goToChapter(3);
 
   return (
-    <Screen chapterId={3}>
+    <Screen chapterId={2}>
       <div className="flex flex-col gap-5 pt-2">
         <SearchBar value={query} onChange={setQuery} placeholder="Electric kettle" />
 

@@ -4,7 +4,7 @@ import { MonthlyRecap } from '@/components/recap/MonthlyRecap';
 /** Chapter 6 — Monthly recap. */
 export function RecapScreen() {
   return (
-    <Screen chapterId={6}>
+    <Screen chapterId={5}>
       <MonthlyRecap />
     </Screen>
   );

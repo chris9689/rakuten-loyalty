@@ -6,22 +6,17 @@ import { LoyaltyStatusCard } from '@/components/loyalty/LoyaltyStatusCard';
 import { CardFace } from '@/components/loyalty/CardFace';
 import { SearchBar } from '@/components/shopping/SearchBar';
 import { Icon } from '@/components/ui/Icon';
-import { Button } from '@/components/ui/Button';
 import { Disclaimer } from '@/components/ui/Card';
 import { settings } from '@/mock-data/settings';
 import { notifications } from '@/mock-data/notifications';
 import { cn } from '@/hooks/utils';
 
-const bankingActions = [
-  { icon: 'swap_horiz', label: 'Transfer', tint: 'bg-primary-fixed', color: 'text-primary' },
-  { icon: 'receipt_long', label: 'Pay bills', tint: 'bg-secondary-fixed', color: 'text-secondary' },
-  { icon: 'article', label: 'Statement', tint: 'bg-surface-container-high', color: 'text-on-surface-variant' },
-  { icon: 'settings', label: 'Card settings', tint: 'bg-surface-container-high', color: 'text-on-surface-variant' },
-];
+/** Placeholder slots for the home offers grid (real offers added later). */
+const offerSlots = [1, 2, 3, 4];
 
 /** Chapter 1 — Home / loyalty overview. */
 export function StatusScreen() {
-  const { isLinked, user, goToChapter, persona } = useDemo();
+  const { user, goToChapter, appUser } = useDemo();
   const [query, setQuery] = useState('');
   const [notifDismissed, setNotifDismissed] = useState(false);
   const [offerVariant, setOfferVariant] = useState<'points' | 'discount'>('points');
@@ -31,14 +26,14 @@ export function StatusScreen() {
     <Screen chapterId={1}>
       <div className="flex flex-col gap-6 pt-2">
 
-        {/* Spend-triggered notification banner — linked only */}
-        {isLinked && !notifDismissed && (
+        {/* Spend-triggered notification banner */}
+        {!notifDismissed && (
           <div className="relative -mx-4 -mt-2 mb-0 flex items-start gap-3 bg-primary px-4 py-3 text-white">
             <span className="mt-0.5 text-xl" aria-hidden>{topNotif.icon}</span>
             <button
               type="button"
               className="min-w-0 flex-1 text-left"
-              onClick={() => { setNotifDismissed(true); goToChapter(4); }}
+              onClick={() => { setNotifDismissed(true); goToChapter(3); }}
             >
               <p className="font-heading text-sm font-bold">{topNotif.title}</p>
               <p className="text-xs opacity-90">{topNotif.body}</p>
@@ -54,7 +49,6 @@ export function StatusScreen() {
           </div>
         )}
 
-
         {/* Greeting */}
         <section className="flex flex-col gap-3">
           <div className="flex flex-col gap-1">
@@ -65,7 +59,7 @@ export function StatusScreen() {
               Welcome back.
             </h2>
             <p className="text-sm text-on-surface-variant">
-              {isLinked ? 'See personalised benefits available for you.' : 'Manage your Rakuten Card.'}
+              See personalised benefits available for you.
             </p>
           </div>
           <SearchBar value={query} onChange={setQuery} placeholder="Search Rakuten" />
@@ -85,190 +79,128 @@ export function StatusScreen() {
           </div>
           <div className="flex items-baseline justify-center gap-2">
             <span className="font-heading text-3xl font-bold">
-              {isLinked ? user.pointsBalance.toLocaleString() : '—'}
+              {user.pointsBalance.toLocaleString()}
             </span>
             <span className="font-heading text-sm font-bold">Points</span>
           </div>
         </motion.section>
 
-        {/* Combined spending summary + link CTA — unlinked only */}
-        {!isLinked && (
-          <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
-            <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Spending Summary</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-on-surface">
-              Your recent eligible card activity is around <span className="font-bold">¥42,000</span>. Join Rakuten Points to start earning and unlock personalised rewards.
-            </p>
-            <button
-              type="button"
-              onClick={() => goToChapter(2)}
-              className="mt-3 flex items-center gap-1 text-xs font-bold text-primary"
-            >
-              Join now to start earning points
-              <Icon name="arrow_forward" className="text-sm" />
-            </button>
-          </section>
-        )}
+        {/* Loyalty status card */}
+        <LoyaltyStatusCard />
 
-        {/* Loyalty status card — linked only */}
-        {isLinked && <LoyaltyStatusCard />}
+        {/* Spending Insight card */}
+        <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
+          <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Spending Insight</p>
+          <p className="mt-1.5 text-sm leading-relaxed text-on-surface">
+            Your recent activity can unlock more this month, including points boosts and member-only offers tailored to your card usage.
+          </p>
+          <button
+            type="button"
+            onClick={() => goToChapter(3)}
+            className="mt-3 flex items-center gap-1 text-xs font-bold text-primary"
+          >
+            Explore your member benefits
+            <Icon name="arrow_forward" className="text-sm" />
+          </button>
+        </section>
 
-        {/* Spending Insight card — linked only, moved after loyalty status */}
-        {isLinked && (
-          <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
-            <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Spending Insight</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-on-surface">
-              Your recent activity can unlock more this month, including points boosts and member-only offers tailored to your card usage.
-            </p>
-            <button
-              type="button"
-              onClick={() => goToChapter(4)}
-              className="mt-3 flex items-center gap-1 text-xs font-bold text-primary"
-            >
-              Explore your member benefits
-              <Icon name="arrow_forward" className="text-sm" />
-            </button>
-          </section>
-        )}
-
-        {/* Bento grid: linked = benefits + trend / unlinked = trend + quick actions */}
-        {isLinked ? (
-          <div className="grid grid-cols-2 gap-4">
-            <button
-              type="button"
-              onClick={() => goToChapter(2)}
-              className="flex flex-col gap-3 rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 text-left shadow-card transition-transform active:scale-95"
-            >
-              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-fixed">
-                <Icon name="card_giftcard" filled className="text-secondary" />
-              </span>
-              <div>
-                <p className="font-heading text-xl font-bold text-on-surface">3</p>
-                <p className="text-[11px] text-on-surface-variant">active benefits available</p>
-              </div>
-              <span className="flex items-center gap-1 text-primary">
-                <span className="text-[11px] font-semibold">View all</span>
-                <Icon name="chevron_right" className="text-sm" />
-              </span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => goToChapter(6)}
-              className="flex flex-col gap-3 rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 text-left shadow-card transition-transform active:scale-95"
-            >
-              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-surface-container-high">
-                <Icon name="trending_up" filled className="text-on-surface-variant" />
-              </span>
-              <div>
-                <p className="font-heading text-xl font-bold text-on-surface">+12%</p>
-                <p className="text-[11px] text-on-surface-variant">vs. last month</p>
-              </div>
-              <span className="flex items-center gap-1 text-on-surface-variant">
-                <span className="text-[11px] font-semibold">Trends</span>
-                <Icon name="show_chart" className="text-sm" />
-              </span>
-            </button>
+        {/* Offers grid — 2x2 placeholder layout */}
+        <section className="flex flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <h3 className="font-heading text-base font-bold text-on-surface">
+              Offers for you
+            </h3>
+            <span className="text-[11px] font-semibold text-on-surface-variant">
+              App user {appUser}
+            </span>
           </div>
-        ) : (
-          <div className="flex flex-col gap-4">
-            {/* Spend trend tile */}
-            <button
-              type="button"
-              className="flex items-center gap-4 rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 text-left shadow-card transition-transform active:scale-95"
-            >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface-container-high">
-                <Icon name="trending_up" filled className="text-on-surface-variant" />
-              </span>
-              <div className="flex-1">
-                <p className="font-heading text-xl font-bold text-on-surface">+12%</p>
-                <p className="text-[11px] text-on-surface-variant">Total spend vs. last month</p>
-              </div>
-              <Icon name="chevron_right" className="text-on-surface-variant" />
-            </button>
-
-            {/* Banking quick actions */}
-            <div className="grid grid-cols-4 gap-2">
-              {bankingActions.map((action) => (
-                <button
-                  key={action.label}
-                  type="button"
-                  className="flex flex-col items-center gap-2 rounded-2xl bg-surface-container-lowest p-3 shadow-card transition-transform active:scale-95"
-                >
-                  <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${action.tint}`}>
-                    <Icon name={action.icon} filled className={action.color} />
-                  </span>
-                  <span className="text-center text-[10px] font-semibold leading-tight text-on-surface-variant">
-                    {action.label}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Recommended for you — linked only */}
-        {isLinked && (
-          <section className="flex flex-col gap-3">
-            <div className="flex items-center justify-between">
-              <h3 className="font-heading text-base font-bold text-on-surface">
-                {persona === 'underEngaged' ? 'Your re-engagement offer' : 'Recommended for you'}
-              </h3>
-              <button
-                type="button"
-                onClick={() => goToChapter(3)}
-                className="text-sm font-semibold text-primary"
+          <div className="grid grid-cols-2 gap-3">
+            {offerSlots.map((slot) => (
+              <div
+                key={slot}
+                className="flex aspect-square flex-col justify-between rounded-2xl border border-dashed border-outline-variant bg-surface-container-low p-3"
               >
-                See All
-              </button>
-            </div>
+                <div className="flex items-center justify-between">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-container-high">
+                    <Icon name="local_offer" className="text-on-surface-variant" />
+                  </span>
+                  <span className="rounded-full bg-surface-container-high px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-on-surface-variant">
+                    Soon
+                  </span>
+                </div>
+                <div>
+                  <p className="font-heading text-sm font-bold text-on-surface">
+                    Offer slot {slot}
+                  </p>
+                  <p className="text-[11px] text-on-surface-variant">Placeholder</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-            {/* Nitori merchant offer — A/B toggle */}
+        {/* Recommended for you */}
+        <section className="flex flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <h3 className="font-heading text-base font-bold text-on-surface">
+              Recommended for you
+            </h3>
             <button
               type="button"
-              onClick={() => setOfferVariant(v => v === 'points' ? 'discount' : 'points')}
-              className="group relative w-full overflow-hidden rounded-2xl text-left shadow-card"
-              aria-label="Toggle offer variation"
+              onClick={() => goToChapter(2)}
+              className="text-sm font-semibold text-primary"
             >
-              <img
-                src="/nitori_offer_1.jpg"
-                alt="Nitori"
-                className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              See All
+            </button>
+          </div>
 
-              {/* Top-left: merchant badge */}
-              <div className="absolute left-3 top-3">
-                <span className="rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink backdrop-blur-sm">
-                  Merchant partner offer
-                </span>
-              </div>
+          {/* Nitori merchant offer — A/B toggle */}
+          <button
+            type="button"
+            onClick={() => setOfferVariant(v => v === 'points' ? 'discount' : 'points')}
+            className="group relative w-full overflow-hidden rounded-2xl text-left shadow-card"
+            aria-label="Toggle offer variation"
+          >
+            <img
+              src="/nitori_offer_1.jpg"
+              alt="Nitori"
+              className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              {/* Top-right: A/B variant pill */}
-              <div className="absolute right-3 top-3">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={offerVariant}
-                    initial={{ opacity: 0, y: -4, scale: 0.9 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.18 }}
-                    className={cn(
-                      'flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold',
-                      offerVariant === 'points'
-                        ? 'bg-primary text-white'
-                        : 'bg-amber-500 text-white',
-                    )}
-                  >
-                    {offerVariant === 'points' ? '✦ Variation A · Points' : '% Variation B · Discount'}
-                  </motion.span>
-                </AnimatePresence>
-              </div>
+            {/* Top-left: merchant badge */}
+            <div className="absolute left-3 top-3">
+              <span className="rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink backdrop-blur-sm">
+                Merchant partner offer
+              </span>
+            </div>
 
-              {/* Bottom content */}
-              <div className="absolute bottom-0 left-0 w-full text-white">
-                {/* Frosted gradient backing for text legibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent rounded-b-2xl" />
-                <div className="relative p-4">
+            {/* Top-right: A/B variant pill */}
+            <div className="absolute right-3 top-3">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={offerVariant}
+                  initial={{ opacity: 0, y: -4, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.18 }}
+                  className={cn(
+                    'flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold',
+                    offerVariant === 'points'
+                      ? 'bg-primary text-white'
+                      : 'bg-amber-500 text-white',
+                  )}
+                >
+                  {offerVariant === 'points' ? '✦ Variation A · Points' : '% Variation B · Discount'}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+
+            {/* Bottom content */}
+            <div className="absolute bottom-0 left-0 w-full text-white">
+              {/* Frosted gradient backing for text legibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent rounded-b-2xl" />
+              <div className="relative p-4">
                 {/* Logo row */}
                 <div className="mb-2 flex items-center gap-2">
                   <img
@@ -308,29 +240,49 @@ export function StatusScreen() {
                   <Icon name="swap_horiz" className="text-xs" />
                   <span className="text-[10px]">Tap to switch offer variation</span>
                 </div>
-                </div>
               </div>
-            </button>
-          </section>
-        )}
-
-        {/* Re-engagement nudge — underEngaged only */}
-        {persona === 'underEngaged' && isLinked && (
-          <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
-            <div className="mb-2 flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-tertiary-fixed">
-                <Icon name="flag" filled className="text-tertiary-container text-lg" />
-              </span>
-              <p className="font-heading text-sm font-bold text-on-surface">Re-engagement opportunity</p>
             </div>
-            <p className="text-xs text-on-surface-variant">
-              You're 3 activities away from Premium rank. Complete one more qualifying spend this month to unlock bonus points.
-            </p>
-            <Button className="mt-3" size="sm" fullWidth onClick={() => goToChapter(2)}>
-              View your activity offer →
-            </Button>
-          </section>
-        )}
+          </button>
+        </section>
+
+        {/* Active benefits + Trends — moved to bottom of page */}
+        <div className="grid grid-cols-2 gap-4">
+          <button
+            type="button"
+            onClick={() => goToChapter(6)}
+            className="flex flex-col gap-3 rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 text-left shadow-card transition-transform active:scale-95"
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-fixed">
+              <Icon name="card_giftcard" filled className="text-secondary" />
+            </span>
+            <div>
+              <p className="font-heading text-xl font-bold text-on-surface">3</p>
+              <p className="text-[11px] text-on-surface-variant">active benefits available</p>
+            </div>
+            <span className="flex items-center gap-1 text-primary">
+              <span className="text-[11px] font-semibold">View all</span>
+              <Icon name="chevron_right" className="text-sm" />
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => goToChapter(5)}
+            className="flex flex-col gap-3 rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 text-left shadow-card transition-transform active:scale-95"
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-surface-container-high">
+              <Icon name="trending_up" filled className="text-on-surface-variant" />
+            </span>
+            <div>
+              <p className="font-heading text-xl font-bold text-on-surface">+12%</p>
+              <p className="text-[11px] text-on-surface-variant">vs. last month</p>
+            </div>
+            <span className="flex items-center gap-1 text-on-surface-variant">
+              <span className="text-[11px] font-semibold">Trends</span>
+              <Icon name="show_chart" className="text-sm" />
+            </span>
+          </button>
+        </div>
 
         <Disclaimer>{settings.disclaimers.illustrative}</Disclaimer>
       </div>
