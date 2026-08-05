@@ -8,7 +8,7 @@ import { Icon } from '@/components/ui/Icon';
  */
 export function WhyShownPanel({ onClose }: { onClose?: () => void }) {
   const { appUserProfile } = useDemo();
-  const { name, context, offer, why, whyShownNow, alternatives } = appUserProfile;
+  const { name, context, why, whyShownNow, alternatives } = appUserProfile;
 
   return (
     <div className="flex h-full flex-col gap-4 overflow-y-auto p-5 no-scrollbar">
@@ -33,23 +33,6 @@ export function WhyShownPanel({ onClose }: { onClose?: () => void }) {
 
       {/* Persona context */}
       <p className="text-xs leading-relaxed text-muted">{context}</p>
-
-      {/* Offer summary */}
-      <div className="rounded-2xl border border-black/[0.08] bg-white/75 p-3">
-        <div className="mb-1 flex flex-wrap items-center gap-2">
-          <span className="rounded-full bg-rakuten-red px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
-            {offer.source}
-          </span>
-          <span className="rounded-full bg-ink px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
-            {offer.merchant}
-          </span>
-          <span className="rounded-full bg-surface-container-high px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-on-surface-variant">
-            {offer.category}
-          </span>
-        </div>
-        <p className="text-sm font-bold text-ink">{offer.headline}</p>
-        <p className="mt-0.5 text-xs text-muted">{offer.subtitle}</p>
-      </div>
 
       {/* Narrative summary */}
       <div className="rounded-2xl border border-rakuten-red/20 bg-rakuten-red/[0.05] p-3">

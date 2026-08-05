@@ -159,14 +159,6 @@ export function StatusScreen() {
                   >
                     {offer.cta}
                   </button>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); openWhy(); }}
-                    className="relative z-30 flex items-center gap-1 rounded-full bg-white/20 px-3 py-1.5 text-[11px] font-semibold backdrop-blur-sm"
-                  >
-                    <Icon name="info" className="text-xs" />
-                    Why shown now
-                  </button>
                 </div>
               </div>
             </div>
