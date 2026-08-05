@@ -86,7 +86,7 @@ export function PresenterControls({ onClose }: { onClose?: () => void }) {
       </div>
 
       <div className="relative">
-        <div className={cn('flex flex-col gap-4', chaptersLocked && 'pointer-events-none opacity-40 grayscale')}>
+        <div className={cn('flex flex-col gap-4', chaptersLocked && 'pointer-events-none')}>
           <DemoChapterStepper />
 
           <div className="grid grid-cols-2 gap-1.5">
@@ -106,11 +106,7 @@ export function PresenterControls({ onClose }: { onClose?: () => void }) {
         </div>
 
         {chaptersLocked && (
-          <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-black/10 p-3">
-            <span className="rounded-full bg-ink/80 px-3 py-1.5 text-center text-[10px] font-semibold text-white">
-              Only Hanako’s journey is optimized — switch to App user Hanako to navigate chapters.
-            </span>
-          </div>
+          <div className="absolute -inset-x-5 inset-y-0 bg-white/75 backdrop-blur-[1px]" />
         )}
       </div>
 
