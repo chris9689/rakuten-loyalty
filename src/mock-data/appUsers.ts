@@ -53,12 +53,12 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       { merchant: 'Nitori', title: 'Storage & organisation', type: 'cashback', icon: 'inventory_2' },
     ],
     whyShownNow:
-      "You've recently compared this kettle and purchased several home-related items. Together, these signals indicate you're currently furnishing a new home, making this offer highly relevant right now.",
+      "Hanako has recently compared this kettle and purchased several home-related items. Together, these signals indicate she's currently furnishing a new home, making this offer highly relevant right now.",
     why: [
       {
         icon: 'compare_arrows',
         label: 'Active purchase intent',
-        detail: 'Recent comparison activity signals you are ready to buy.',
+        detail: 'Recent comparison activity signals Hanako is ready to buy.',
       },
       {
         icon: 'home',
@@ -67,8 +67,8 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       },
       {
         icon: 'shopping_bag',
-        label: 'In your journey',
-        detail: 'The product remains highly relevant to your current shopping journey.',
+        label: 'In the journey',
+        detail: "The product remains highly relevant to Hanako's current shopping journey.",
       },
       {
         icon: 'sell',
@@ -119,7 +119,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       { merchant: 'Rakuten Ichiba', title: 'Sun protection', type: 'cashback', icon: 'wb_sunny' },
     ],
     whyShownNow:
-      "You're currently researching an Okinawa trip, and this dress matches your preferred style, size, and travel destination. The offer is available and relevant to your upcoming plans.",
+      "Kumiko is currently researching an Okinawa trip, and this dress matches her preferred style, size, and travel destination. The offer is available and relevant to her upcoming plans.",
     why: [
       {
         icon: 'travel_explore',
@@ -134,7 +134,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       {
         icon: 'checkroom',
         label: 'Style & size match',
-        detail: 'The item matches your preferred size and style preferences.',
+        detail: "The item matches Kumiko's preferred size and style preferences.",
       },
       {
         icon: 'sell',
@@ -177,7 +177,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       { merchant: 'MTR Travel', title: 'Airport lounge', type: 'travel', icon: 'flight' },
     ],
     whyShownNow:
-      "You're actively planning a trip to Osaka and are eligible for this travel benefit. Activating it before completing your booking ensures you can take advantage of the available value.",
+      "Kenji is actively planning a trip to Osaka and is eligible for this travel benefit. Activating it before completing the booking ensures he can take advantage of the available value.",
     why: [
       {
         icon: 'travel_explore',
@@ -192,12 +192,12 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       {
         icon: 'credit_card',
         label: 'Cardholder eligible',
-        detail: 'You are eligible for the available offer.',
+        detail: 'Kenji is eligible for the available offer.',
       },
       {
         icon: 'schedule',
         label: 'Booking window',
-        detail: 'Offer timing aligns with your booking window.',
+        detail: "Offer timing aligns with Kenji's booking window.",
       },
     ],
     alternatives: [
@@ -247,7 +247,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       { merchant: 'Rakuten Delivery', title: 'Delivery deals', type: 'discount', icon: 'delivery_dining' },
     ],
     whyShownNow:
-      "It's lunchtime, you're near participating restaurants, and your previous dining activity suggests strong interest in similar offers. This benefit is currently available and ready to activate.",
+      "It's lunchtime, Yuki is near participating restaurants, and her previous dining activity suggests strong interest in similar offers. This benefit is currently available and ready to activate.",
     why: [
       {
         icon: 'schedule',
@@ -257,17 +257,17 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       {
         icon: 'location_on',
         label: 'Near participating venues',
-        detail: 'You are currently near participating restaurants.',
+        detail: 'Yuki is currently near participating restaurants.',
       },
       {
         icon: 'restaurant',
         label: 'Dining affinity',
-        detail: 'Your dining history indicates high likelihood of engagement.',
+        detail: "Yuki's dining history indicates high likelihood of engagement.",
       },
       {
         icon: 'verified',
         label: 'Eligibility confirmed',
-        detail: 'Offer eligibility has been confirmed for your card.',
+        detail: "Offer eligibility has been confirmed for Yuki's card.",
       },
     ],
     alternatives: [
