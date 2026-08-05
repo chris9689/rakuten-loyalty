@@ -264,10 +264,10 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       },
     ],
     gridOffers: [
-      { merchant: 'Nearby Cafés', title: 'Coffee cashback', type: 'cashback', icon: 'local_cafe' },
-      { merchant: 'Nearby Restaurants', title: 'Dinner rewards', type: 'cashback', icon: 'dinner_dining' },
-      { merchant: 'Rakuten Ichiba', title: 'After-lunch pick', type: 'points', icon: 'shopping_bag' },
-      { merchant: 'Rakuten Delivery', title: 'Delivery deals', type: 'discount', icon: 'delivery_dining' },
+      { merchant: 'Nearby Cafés', title: 'Coffee cashback', type: 'cashback', image: '/yuki-coffee-cashback.jpg', logo: '/yuki-coffee-cashback-logo.jpg' },
+      { merchant: 'Nearby Restaurants', title: 'Dinner rewards', type: 'cashback', image: '/yuki-dinner-reward.jpg', logo: '/yuki-dinner-reward-logo.jpg' },
+      { merchant: 'Rakuten Ichiba', title: 'After-lunch pick', type: 'points', image: '/yuki-after-lunch.jpg', logo: '/yuki-after-lunch-logo.jpg' },
+      { merchant: 'MTR Travel', title: 'Travel rewards', type: 'travel', image: '/yuki-travel-reward.jpg', logo: '/yuki-travel-reward-logo.jpg' },
     ],
     whyShownNow:
       "It's lunchtime, Yuki is near participating restaurants, and her previous dining activity suggests strong interest in similar offers. This benefit is currently available and ready to activate.",
@@ -297,7 +297,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       {
         source: 'Rakuten Offer',
         label: 'Secondary supporting offer',
-        cta: 'Save on a recommended item selected for your interests after lunch.',
+        cta: 'Complementary offers nearby extend the moment — a coffee right after lunch in the same location, plus dinner rewards, an after-lunch pick and travel rewards.',
       },
     ],
   },

@@ -11,10 +11,9 @@ import { settings } from '@/mock-data/settings';
 
 /** Chapter 1 — Home / loyalty overview. */
 export function StatusScreen() {
-  const { user, goToChapter, appUser, appUserProfile, openWhy } = useDemo();
+  const { user, goToChapter, appUserProfile, openWhy } = useDemo();
   const [query, setQuery] = useState('');
   const { offers, gridOffers, spendingInsight } = appUserProfile;
-  const primaryOffer = offers[0];
 
   return (
     <Screen chapterId={1}>
@@ -139,14 +138,9 @@ export function StatusScreen() {
 
         {/* Offers grid — 2x2 (complements the main offer's category) */}
         <section className="flex flex-col gap-3">
-          <div className="flex items-center justify-between">
-            <h3 className="font-heading text-base font-bold text-on-surface">
-              Offers for you
-            </h3>
-            <span className="text-[11px] font-semibold text-on-surface-variant">
-              {primaryOffer.category} · App user {appUser}
-            </span>
-          </div>
+          <h3 className="font-heading text-base font-bold text-on-surface">
+            Offers for you
+          </h3>
           <div className="grid grid-cols-2 gap-3">
             {gridOffers.map((grid, i) => (
               <div
