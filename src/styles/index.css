@@ -79,6 +79,17 @@ body {
   backdrop-filter: blur(14px);
 }
 
+/* Lift tiny caption text for presentation readability without touching each component. */
+[class*='text-[10px]'] {
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+}
+
+[class*='text-[11px]'] {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+}
+
 /* Respect reduced motion globally for CSS-driven transitions. */
 @media (prefers-reduced-motion: reduce) {
   *,

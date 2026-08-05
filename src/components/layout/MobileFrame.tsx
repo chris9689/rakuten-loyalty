@@ -30,7 +30,7 @@ export function MobileFrame({ children, className }: MobileFrameProps) {
   return (
     <div
       className={cn(
-        'relative mx-auto w-full max-w-[390px] select-none',
+        'relative mx-auto w-full max-w-[420px] select-none',
         className,
       )}
     >

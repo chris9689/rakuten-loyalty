@@ -58,6 +58,10 @@ export default {
         sans: ['Noto Sans', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
         heading: ['Plus Jakarta Sans', 'Noto Sans', 'system-ui', 'sans-serif'],
       },
+      fontSize: {
+        xs: ['0.8125rem', { lineHeight: '1.1rem' }],
+        sm: ['0.9375rem', { lineHeight: '1.35rem' }],
+      },
       boxShadow: {
         card: '0 4px 12px rgba(0,0,0,0.04)',
         float: '0 8px 20px rgba(0,0,0,0.08)',

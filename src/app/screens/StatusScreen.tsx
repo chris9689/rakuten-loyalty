@@ -96,14 +96,14 @@ export function StatusScreen() {
           <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
             <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Spending Summary</p>
             <p className="mt-1.5 text-sm leading-relaxed text-on-surface">
-              You've spent <span className="font-bold">¥42,000</span> on home setup — kitchen appliances, lighting, and furniture.
+              Your recent eligible card activity is around <span className="font-bold">¥42,000</span>. Join Rakuten Points to start earning and unlock personalised rewards.
             </p>
             <button
               type="button"
               onClick={() => goToChapter(2)}
               className="mt-3 flex items-center gap-1 text-xs font-bold text-primary"
             >
-              Link your account to unlock personalised offers
+              Join now to start earning points
               <Icon name="arrow_forward" className="text-sm" />
             </button>
           </section>
@@ -117,14 +117,14 @@ export function StatusScreen() {
           <section className="rounded-2xl border border-surface-container-high bg-surface-container-lowest p-4 shadow-card">
             <p className="text-[11px] font-bold uppercase tracking-wide text-muted">Spending Insight</p>
             <p className="mt-1.5 text-sm leading-relaxed text-on-surface">
-              You've spent <span className="font-bold">¥42,000</span> on home setup — kitchen appliances, lighting, and furniture.
+              Your recent activity can unlock more this month, including points boosts and member-only offers tailored to your card usage.
             </p>
             <button
               type="button"
               onClick={() => goToChapter(4)}
               className="mt-3 flex items-center gap-1 text-xs font-bold text-primary"
             >
-              See personalised rewards
+              Explore your member benefits
               <Icon name="arrow_forward" className="text-sm" />
             </button>
           </section>
