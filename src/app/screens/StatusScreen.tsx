@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useDemo } from '@/app/DemoContext';
 import { Screen } from './Screen';
 import { LoyaltyStatusCard } from '@/components/loyalty/LoyaltyStatusCard';
@@ -9,18 +9,17 @@ import { Icon } from '@/components/ui/Icon';
 import { Disclaimer } from '@/components/ui/Card';
 import { settings } from '@/mock-data/settings';
 import { notifications } from '@/mock-data/notifications';
-import { cn } from '@/hooks/utils';
 
 /** Placeholder slots for the home offers grid (real offers added later). */
 const offerSlots = [1, 2, 3, 4];
 
 /** Chapter 1 — Home / loyalty overview. */
 export function StatusScreen() {
-  const { user, goToChapter, appUser } = useDemo();
+  const { user, goToChapter, appUser, appUserProfile, openWhy } = useDemo();
   const [query, setQuery] = useState('');
   const [notifDismissed, setNotifDismissed] = useState(false);
-  const [offerVariant, setOfferVariant] = useState<'points' | 'discount'>('points');
   const topNotif = notifications[0];
+  const { offer } = appUserProfile;
 
   return (
     <Screen chapterId={1}>
@@ -104,14 +103,14 @@ export function StatusScreen() {
           </button>
         </section>
 
-        {/* Offers grid — 2x2 placeholder layout */}
+        {/* Offers grid — 2x2 placeholder layout (complements the main offer's category) */}
         <section className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <h3 className="font-heading text-base font-bold text-on-surface">
               Offers for you
             </h3>
             <span className="text-[11px] font-semibold text-on-surface-variant">
-              App user {appUser}
+              {offer.category} · App user {appUser}
             </span>
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -132,14 +131,14 @@ export function StatusScreen() {
                   <p className="font-heading text-sm font-bold text-on-surface">
                     Offer slot {slot}
                   </p>
-                  <p className="text-[11px] text-on-surface-variant">Placeholder</p>
+                  <p className="text-[11px] text-on-surface-variant">{offer.category}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Recommended for you */}
+        {/* Recommended for you — the main targeted offer for this app user */}
         <section className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <h3 className="font-heading text-base font-bold text-on-surface">
@@ -154,95 +153,80 @@ export function StatusScreen() {
             </button>
           </div>
 
-          {/* Nitori merchant offer — A/B toggle */}
-          <button
-            type="button"
-            onClick={() => setOfferVariant(v => v === 'points' ? 'discount' : 'points')}
-            className="group relative w-full overflow-hidden rounded-2xl text-left shadow-card"
-            aria-label="Toggle offer variation"
-          >
+          <div className="group relative w-full overflow-hidden rounded-2xl text-left shadow-card">
             <img
-              src="/nitori_offer_1.jpg"
-              alt="Nitori"
+              src={offer.image}
+              alt={offer.merchant}
               className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
+            {/* Full-card tap target opens the "Why shown now" panel */}
+            <button
+              type="button"
+              onClick={openWhy}
+              className="absolute inset-0 z-10"
+              aria-label="Why is this shown now?"
+            />
+
             {/* Top-left: merchant badge */}
-            <div className="absolute left-3 top-3">
+            <div className="absolute left-3 top-3 z-20">
               <span className="rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink backdrop-blur-sm">
                 Merchant partner offer
               </span>
             </div>
 
-            {/* Top-right: A/B variant pill */}
-            <div className="absolute right-3 top-3">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={offerVariant}
-                  initial={{ opacity: 0, y: -4, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.18 }}
-                  className={cn(
-                    'flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold',
-                    offerVariant === 'points'
-                      ? 'bg-primary text-white'
-                      : 'bg-amber-500 text-white',
-                  )}
-                >
-                  {offerVariant === 'points' ? '✦ Variation A · Points' : '% Variation B · Discount'}
-                </motion.span>
-              </AnimatePresence>
+            {/* Top-right: offer type pill */}
+            <div className="absolute right-3 top-3 z-20">
+              <span className="flex items-center gap-1 rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+                {offer.type}
+              </span>
             </div>
 
             {/* Bottom content */}
-            <div className="absolute bottom-0 left-0 w-full text-white">
-              {/* Frosted gradient backing for text legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent rounded-b-2xl" />
+            <div className="absolute bottom-0 left-0 z-20 w-full text-white">
+              <div className="absolute inset-0 rounded-b-2xl bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
               <div className="relative p-4">
                 {/* Logo row */}
                 <div className="mb-2 flex items-center gap-2">
-                  <img
-                    src="/nitori_logo.jpg"
-                    alt="Nitori"
-                    className="h-5 w-auto rounded object-contain"
-                  />
+                  {offer.logo && (
+                    <img
+                      src={offer.logo}
+                      alt={offer.merchant}
+                      className="h-5 w-auto rounded object-contain"
+                    />
+                  )}
                   <span className="rounded-full bg-white/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide backdrop-blur-sm">
                     Rakuten Card · Mastercard
                   </span>
                 </div>
 
-                {/* Animated offer content */}
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={offerVariant}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <h4 className="font-heading text-base font-bold leading-tight">
-                      {offerVariant === 'points'
-                        ? 'Earn 3× points on every purchase'
-                        : '5% off your next visit to Nitori'}
-                    </h4>
-                    <p className="mt-0.5 text-xs opacity-80">
-                      {offerVariant === 'points'
-                        ? 'Pay with your Rakuten Card Mastercard in-store or online'
-                        : 'Exclusive Rakuten Card Mastercard discount, no minimum spend'}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
+                <h4 className="font-heading text-base font-bold leading-tight">
+                  {offer.headline}
+                </h4>
+                <p className="mt-0.5 text-xs opacity-80">{offer.subtitle}</p>
 
-                {/* Swap hint */}
-                <div className="mt-2 flex items-center gap-1 opacity-50">
-                  <Icon name="swap_horiz" className="text-xs" />
-                  <span className="text-[10px]">Tap to switch offer variation</span>
+                {/* Actions */}
+                <div className="mt-3 flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); goToChapter(3); }}
+                    className="relative z-30 rounded-full bg-white px-4 py-1.5 text-xs font-bold text-ink"
+                  >
+                    {offer.cta}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); openWhy(); }}
+                    className="relative z-30 flex items-center gap-1 rounded-full bg-white/20 px-3 py-1.5 text-[11px] font-semibold backdrop-blur-sm"
+                  >
+                    <Icon name="info" className="text-xs" />
+                    Why shown now
+                  </button>
                 </div>
               </div>
             </div>
-          </button>
+          </div>
         </section>
 
         {/* Active benefits + Trends — moved to bottom of page */}

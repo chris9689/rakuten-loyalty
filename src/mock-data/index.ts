@@ -1,6 +1,7 @@
 export * from './users';
 export * from './products';
 export * from './offers';
+export * from './appUsers';
 export * from './loyalty';
 export * from './campaigns';
 export * from './recommendations';

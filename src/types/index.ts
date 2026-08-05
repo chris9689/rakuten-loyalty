@@ -181,3 +181,56 @@ export interface Chapter {
   /** Icon shown in the presenter stepper. */
   icon: string;
 }
+
+/** Selectable app-user id driving the home experience variant (1-4). */
+export type AppUserId = 1 | 2 | 3 | 4;
+
+/**
+ * A single "Why shown now" reason surfaced in the left panel when the
+ * customer taps the recommended offer.
+ */
+export interface WhyReason {
+  /** Material Symbols icon name. */
+  icon: string;
+  /** Short reason title. */
+  label: string;
+  /** Supporting one-line explanation. */
+  detail: string;
+}
+
+/**
+ * The main targeted offer rendered in the home "Recommended for you" card
+ * for a given app user. The 2x2 grid is complemented by separately-defined
+ * offers from the same {@link AppUserOffer.category}.
+ */
+export interface AppUserOffer {
+  /** Merchant / partner name shown on the card badge. */
+  merchant: string;
+  /** Offer category — used to complement the 2x2 grid offers. */
+  category: string;
+  /** Offer mechanic, e.g. 'points', 'discount', 'cashback', 'bundle'. */
+  type: string;
+  /** Headline shown on the recommended offer card. */
+  headline: string;
+  /** Supporting line beneath the headline. */
+  subtitle: string;
+  /** Call-to-action button label. */
+  cta: string;
+  /** Hero image path served from /public. */
+  image: string;
+  /** Optional partner logo path served from /public. */
+  logo?: string;
+}
+
+/** Full home-experience definition for one of the four app users. */
+export interface AppUserProfile {
+  id: AppUserId;
+  /** Persona display name, e.g. "Hanako · New homeowner". */
+  name: string;
+  /** One-line situational context for the persona. */
+  context: string;
+  /** The main targeted "Recommended for you" offer. */
+  offer: AppUserOffer;
+  /** Ordered reasons shown in the "Why shown now" panel. */
+  why: WhyReason[];
+}

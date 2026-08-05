@@ -8,6 +8,7 @@ import { HeaderBar } from '@/components/layout/HeaderBar';
 import { BottomNav } from '@/components/layout/BottomNav';
 import { BehindTheScenes } from '@/components/presenter/BehindTheScenes';
 import { PresenterControls } from '@/components/presenter/PresenterControls';
+import { WhyShownPanel } from '@/components/presenter/WhyShownPanel';
 import { Drawer } from '@/components/ui/Drawer';
 import { BrandLogo } from '@/components/ui/BrandLogo';
 
@@ -17,12 +18,29 @@ import { BrandLogo } from '@/components/ui/BrandLogo';
  */
 export function AppShell() {
   useKeyboardShortcuts();
-  const { chapter, presenterOpen, setPresenterOpen } = useDemo();
+  const { chapter, presenterOpen, setPresenterOpen, whyOpen, closeWhy } = useDemo();
   const Screen = screenByChapter[chapter];
 
   return (
     <div className="min-h-full w-full">
       <div className="mx-auto flex max-w-6xl flex-col items-stretch gap-6 px-4 py-6 lg:flex-row lg:items-start lg:justify-center lg:py-10">
+        {/* Why shown now — left rail */}
+        <AnimatePresence>
+          {whyOpen && (
+            <motion.aside
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -24 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="hidden w-[320px] shrink-0 self-stretch lg:block"
+            >
+              <div className="sticky top-10 max-h-[calc(100vh-5rem)] overflow-hidden rounded-3xl bg-canvas shadow-card ring-1 ring-black/[0.04]">
+                <WhyShownPanel onClose={closeWhy} />
+              </div>
+            </motion.aside>
+          )}
+        </AnimatePresence>
+
         {/* Phone */}
         <div className="flex flex-1 flex-col items-center">
           <BrandIntro />
@@ -72,6 +90,15 @@ export function AppShell() {
           contained={false}
         >
           <PresenterControls onClose={() => setPresenterOpen(false)} />
+        </Drawer>
+
+        <Drawer
+          open={whyOpen}
+          onClose={closeWhy}
+          title="Why shown now"
+          contained={false}
+        >
+          <WhyShownPanel onClose={closeWhy} />
         </Drawer>
       </div>
 

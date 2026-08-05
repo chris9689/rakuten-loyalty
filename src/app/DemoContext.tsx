@@ -6,13 +6,14 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import type { PersonaState, User, LoyaltyStatus } from '@/types';
+import type { PersonaState, User, LoyaltyStatus, AppUserId, AppUserProfile } from '@/types';
 import { hanako } from '@/mock-data/users';
 import { loyaltyStatus } from '@/mock-data/loyalty';
+import { appUserProfileById } from '@/mock-data/appUsers';
 import { totalChapters } from './chapters';
 
 /** Selectable app-user profiles for the different home experiences. */
-export type AppUser = 1 | 2 | 3 | 4;
+export type AppUser = AppUserId;
 
 interface DemoContextValue {
   /** Current chapter (1-6). */
@@ -33,6 +34,13 @@ interface DemoContextValue {
   /** Selected app-user profile (placeholder for home experience variants). */
   appUser: AppUser;
   setAppUser: (u: AppUser) => void;
+  /** Full home-experience definition for the selected app user. */
+  appUserProfile: AppUserProfile;
+
+  /** "Why shown now" left panel visibility (opens when tapping the offer). */
+  whyOpen: boolean;
+  openWhy: () => void;
+  closeWhy: () => void;
 
   /** Decision animation replay token — bump to re-trigger animations. */
   replayToken: number;
@@ -65,8 +73,8 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   const [replayToken, setReplayToken] = useState(0);
   const [presenterOpen, setPresenterOpen] = useState(false);
   const [behindOpen, setBehindOpen] = useState(false);
+  const [whyOpen, setWhyOpen] = useState(false);
   const [offerAccepted, setOfferAccepted] = useState(false);
-
   const goToChapter = useCallback((id: number) => {
     setChapter(Math.min(Math.max(1, id), totalChapters));
   }, []);
@@ -86,11 +94,14 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   const resetOffer = useCallback(() => setOfferAccepted(false), []);
   const togglePresenter = useCallback(() => setPresenterOpen((o) => !o), []);
   const toggleBehind = useCallback(() => setBehindOpen((o) => !o), []);
+  const openWhy = useCallback(() => setWhyOpen(true), []);
+  const closeWhy = useCallback(() => setWhyOpen(false), []);
 
   const resetDemo = useCallback(() => {
     setChapter(1);
     setAppUser(1);
     setReplayToken((t) => t + 1);
+    setWhyOpen(false);
     setOfferAccepted(false);
   }, []);
 
@@ -107,6 +118,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
   );
 
   const loyalty = loyaltyStatus;
+  const appUserProfile = appUserProfileById(appUser);
 
   const value: DemoContextValue = {
     chapter,
@@ -119,6 +131,10 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     loyalty,
     appUser,
     setAppUser,
+    appUserProfile,
+    whyOpen,
+    openWhy,
+    closeWhy,
     replayToken,
     replayDecision,
     presenterOpen,
