@@ -109,10 +109,10 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       category: 'Fashion & travel',
       type: 'discount',
       title: 'Styled for your Okinawa getaway',
-      header: 'Get ¥1,000 off this Okinawa-ready A-line dress.',
+      header: 'Get ¥1,000 off this summer dress.',
       cta: 'Get ¥1,000 off',
-      image: '/nitori_offer_1.jpg',
-      logo: '/nitori_logo.jpg',
+      image: '/kumiko-offer.png',
+      logo: '/Rakuten_Global_Brand_Logo.svg.webp',
     },
     gridOffers: [
       { merchant: 'Rakuten Fashion', title: 'Beachwear edit', type: 'discount', icon: 'beach_access' },
