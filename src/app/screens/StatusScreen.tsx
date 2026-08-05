@@ -8,42 +8,16 @@ import { SearchBar } from '@/components/shopping/SearchBar';
 import { Icon } from '@/components/ui/Icon';
 import { Disclaimer } from '@/components/ui/Card';
 import { settings } from '@/mock-data/settings';
-import { notifications } from '@/mock-data/notifications';
 
 /** Chapter 1 — Home / loyalty overview. */
 export function StatusScreen() {
   const { user, goToChapter, appUser, appUserProfile, openWhy } = useDemo();
   const [query, setQuery] = useState('');
-  const [notifDismissed, setNotifDismissed] = useState(false);
-  const topNotif = notifications[0];
   const { offer, gridOffers, spendingInsight } = appUserProfile;
 
   return (
     <Screen chapterId={1}>
       <div className="flex flex-col gap-6 pt-2">
-
-        {/* Spend-triggered notification banner */}
-        {!notifDismissed && (
-          <div className="relative -mx-4 -mt-2 mb-0 flex items-start gap-3 bg-primary px-4 py-3 text-white">
-            <span className="mt-0.5 text-xl" aria-hidden>{topNotif.icon}</span>
-            <button
-              type="button"
-              className="min-w-0 flex-1 text-left"
-              onClick={() => { setNotifDismissed(true); goToChapter(3); }}
-            >
-              <p className="font-heading text-sm font-bold">{topNotif.title}</p>
-              <p className="text-xs opacity-90">{topNotif.body}</p>
-            </button>
-            <button
-              type="button"
-              onClick={() => setNotifDismissed(true)}
-              className="mt-0.5 shrink-0 opacity-70 hover:opacity-100"
-              aria-label="Dismiss notification"
-            >
-              ✕
-            </button>
-          </div>
-        )}
 
         {/* Greeting */}
         <section className="flex flex-col gap-3">
@@ -85,12 +59,12 @@ export function StatusScreen() {
         <section className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <h3 className="font-heading text-base font-bold text-on-surface">
-              Recommended for you
+              {offer.title}
             </h3>
             <button
               type="button"
               onClick={() => goToChapter(2)}
-              className="text-sm font-semibold text-primary"
+              className="shrink-0 text-sm font-semibold text-primary"
             >
               See All
             </button>
@@ -131,24 +105,19 @@ export function StatusScreen() {
               <div className="absolute inset-0 rounded-b-2xl bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
               <div className="relative p-4">
                 {/* Logo row */}
-                <div className="mb-2 flex items-center gap-2">
-                  {offer.logo && (
+                {offer.logo && (
+                  <div className="mb-2 flex items-center gap-2">
                     <img
                       src={offer.logo}
                       alt={offer.merchant}
-                      className="h-5 w-auto rounded object-contain"
+                      className="h-6 w-auto rounded object-contain"
                     />
-                  )}
-                  <span className="text-[11px] font-bold">{offer.merchant}</span>
-                  <span className="rounded-full bg-white/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide backdrop-blur-sm">
-                    Rakuten Card · Mastercard
-                  </span>
-                </div>
+                  </div>
+                )}
 
                 <h4 className="font-heading text-base font-bold leading-tight">
-                  {offer.headline}
+                  {offer.header}
                 </h4>
-                <p className="mt-0.5 text-xs opacity-80">{offer.subtitle}</p>
 
                 {/* Actions */}
                 <div className="mt-3 flex items-center gap-2">

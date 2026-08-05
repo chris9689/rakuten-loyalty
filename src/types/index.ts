@@ -214,16 +214,16 @@ export interface WhyReason {
 export interface AppUserOffer {
   /** Offer source/network (Rakuten / Mastercard / MTR). */
   source: OfferSource;
-  /** Merchant / partner name shown on the card. */
+  /** Merchant / partner name. */
   merchant: string;
   /** Offer category — used to complement the 2x2 grid offers. */
   category: string;
   /** Offer mechanic, e.g. 'points', 'discount', 'cashback', 'travel'. */
   type: string;
-  /** Headline shown on the recommended offer card (usually the product). */
-  headline: string;
-  /** Supporting line beneath the headline — typically the dynamic CTA copy. */
-  subtitle: string;
+  /** Section title shown above the offer (e.g. "A top lunch pick..."). */
+  title: string;
+  /** Header line shown on the offer card (the dynamic CTA copy). */
+  header: string;
   /** Short call-to-action button label. */
   cta: string;
   /** Hero image path served from /public. */
