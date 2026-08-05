@@ -20,7 +20,7 @@ export function PresenterControls({ onClose }: { onClose?: () => void }) {
   const chaptersLocked = appUser !== 1;
 
   return (
-    <div className="flex h-full flex-col gap-4 overflow-y-auto p-5 no-scrollbar">
+    <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-5 no-scrollbar">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-[11px] font-bold uppercase tracking-wide text-rakuten-red">

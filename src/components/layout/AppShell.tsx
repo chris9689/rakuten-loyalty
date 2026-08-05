@@ -34,7 +34,7 @@ export function AppShell() {
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className="hidden w-[320px] shrink-0 self-stretch lg:block"
             >
-              <div className="sticky top-10 max-h-[calc(100vh-5rem)] overflow-hidden rounded-3xl bg-canvas shadow-card ring-1 ring-black/[0.04]">
+              <div className="sticky top-10 flex max-h-[calc(100vh-5rem)] flex-col overflow-hidden rounded-3xl bg-canvas shadow-card ring-1 ring-black/[0.04]">
                 <WhyShownPanel onClose={closeWhy} />
               </div>
             </motion.aside>
@@ -74,7 +74,7 @@ export function AppShell() {
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className="hidden w-[320px] shrink-0 self-stretch lg:block"
             >
-              <div className="sticky top-10 max-h-[calc(100vh-5rem)] overflow-hidden rounded-3xl bg-canvas shadow-card ring-1 ring-black/[0.04]">
+              <div className="sticky top-10 flex max-h-[calc(100vh-5rem)] flex-col overflow-hidden rounded-3xl bg-canvas shadow-card ring-1 ring-black/[0.04]">
                 <PresenterControls onClose={() => setPresenterOpen(false)} />
               </div>
             </motion.aside>
