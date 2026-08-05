@@ -1,21 +1,23 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useDemo, type AppUser } from '@/app/DemoContext';
+import { appUserProfileById } from '@/mock-data/appUsers';
 import { DemoChapterStepper } from './DemoChapterStepper';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/hooks/utils';
 
-const appUsers: { key: AppUser; label: string; detail: string }[] = [
-  { key: 1, label: 'App user 1', detail: 'Home experience A' },
-  { key: 2, label: 'App user 2', detail: 'Home experience B' },
-  { key: 3, label: 'App user 3', detail: 'Home experience C' },
-  { key: 4, label: 'App user 4', detail: 'Home experience D' },
-];
+const appUsers: { key: AppUser; label: string }[] = ([1, 2, 3, 4] as AppUser[]).map((id) => ({
+  key: id,
+  label: `App user ${appUserProfileById(id).name.split(' ')[0]}`,
+}));
 
 /** The presenter control panel used on desktop side rail and mobile sheet. */
 export function PresenterControls({ onClose }: { onClose?: () => void }) {
   const { toggleBehind, nextChapter, prevChapter, resetDemo, appUser, setAppUser } = useDemo();
   const [showAppUsers, setShowAppUsers] = useState(false);
+
+  // Only Hanako's journey (app user 1) has optimized downstream screens.
+  const chaptersLocked = appUser !== 1;
 
   return (
     <div className="flex h-full flex-col gap-4 overflow-y-auto p-5 no-scrollbar">
@@ -74,7 +76,6 @@ export function PresenterControls({ onClose }: { onClose?: () => void }) {
                       )}
                     >
                       <span className="text-xs font-bold">{m.label}</span>
-                      <span className={cn('text-[10px]', active ? 'text-white/60' : 'text-muted')}>{m.detail}</span>
                     </button>
                   );
                 })}
@@ -84,21 +85,33 @@ export function PresenterControls({ onClose }: { onClose?: () => void }) {
         </AnimatePresence>
       </div>
 
-      <DemoChapterStepper />
+      <div className="relative">
+        <div className={cn('flex flex-col gap-4', chaptersLocked && 'pointer-events-none opacity-40 grayscale')}>
+          <DemoChapterStepper />
 
-      <div className="grid grid-cols-2 gap-1.5">
-        <Button variant="outline" size="sm" onClick={prevChapter} aria-label="Previous step">
-          ← Prev
-        </Button>
-        <Button variant="outline" size="sm" onClick={nextChapter} aria-label="Next step">
-          Next →
-        </Button>
-      </div>
+          <div className="grid grid-cols-2 gap-1.5">
+            <Button variant="outline" size="sm" onClick={prevChapter} aria-label="Previous step">
+              ← Prev
+            </Button>
+            <Button variant="outline" size="sm" onClick={nextChapter} aria-label="Next step">
+              Next →
+            </Button>
+          </div>
 
-      <div className="grid grid-cols-1 gap-1.5">
-        <Button variant="primary" size="sm" onClick={toggleBehind}>
-          Reasoning
-        </Button>
+          <div className="grid grid-cols-1 gap-1.5">
+            <Button variant="primary" size="sm" onClick={toggleBehind}>
+              Reasoning
+            </Button>
+          </div>
+        </div>
+
+        {chaptersLocked && (
+          <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-black/10 p-3">
+            <span className="rounded-full bg-ink/80 px-3 py-1.5 text-center text-[10px] font-semibold text-white">
+              Only Hanako’s journey is optimized — switch to App user Hanako to navigate chapters.
+            </span>
+          </div>
+        )}
       </div>
 
       <Button variant="outline" size="sm" fullWidth onClick={resetDemo} aria-label="Reset demo to start">

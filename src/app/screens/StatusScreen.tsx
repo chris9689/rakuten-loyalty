@@ -23,7 +23,7 @@ export function StatusScreen() {
         <section className="flex flex-col gap-3">
           <div className="flex flex-col gap-1">
             <p className="font-heading text-sm font-semibold text-secondary">
-              Good morning, {appUserProfile.name.split(' ')[0]}
+              {appUserProfile.greeting ?? 'Good morning'}, {appUserProfile.name.split(' ')[0]}
             </p>
             <h2 className="font-heading text-3xl font-bold tracking-tight text-on-surface">
               Welcome back.

@@ -242,6 +242,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
     id: 4,
     name: 'Yuki Yamamoto',
     context: '11:30 AM, Tokyo · near participating restaurants at lunchtime.',
+    greeting: 'Konnichiwa',
     pointsBalance: 5420,
     cardImage: '/cardface_mycolor_greige.png',
     loyalty: makeLoyalty({

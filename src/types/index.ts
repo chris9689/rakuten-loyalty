@@ -253,6 +253,8 @@ export interface AppUserProfile {
   name: string;
   /** One-line situational context for the persona (time / activity). */
   context: string;
+  /** Greeting prefix shown before the name (defaults to "Good morning"). */
+  greeting?: string;
   /** Illustrative points balance shown in the "Available balance" card. */
   pointsBalance: number;
   /** Card artwork path (in /public) shown in the balance card. */
