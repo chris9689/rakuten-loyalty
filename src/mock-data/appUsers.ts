@@ -28,6 +28,12 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       image: '/nitori_offer_1.jpg',
       logo: '/nitori_logo.jpg',
     },
+    gridOffers: [
+      { merchant: 'Nitori', title: 'Bedroom refresh', type: 'points', icon: 'bed' },
+      { merchant: 'Rakuten Ichiba', title: 'Kitchen essentials', type: 'discount', icon: 'kitchen' },
+      { merchant: 'Rakuten Ichiba', title: 'Smart lighting', type: 'points', icon: 'lightbulb' },
+      { merchant: 'Nitori', title: 'Storage & organisation', type: 'cashback', icon: 'inventory_2' },
+    ],
     why: [
       {
         icon: 'home',
@@ -60,6 +66,12 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       image: '/nitori_offer_1.jpg',
       logo: '/nitori_logo.jpg',
     },
+    gridOffers: [
+      { merchant: 'Merchant name', title: 'Grid offer 1', type: 'discount', icon: 'local_offer' },
+      { merchant: 'Merchant name', title: 'Grid offer 2', type: 'points', icon: 'local_offer' },
+      { merchant: 'Merchant name', title: 'Grid offer 3', type: 'discount', icon: 'local_offer' },
+      { merchant: 'Merchant name', title: 'Grid offer 4', type: 'cashback', icon: 'local_offer' },
+    ],
     why: [
       {
         icon: 'insights',
@@ -92,6 +104,12 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       image: '/nitori_offer_1.jpg',
       logo: '/nitori_logo.jpg',
     },
+    gridOffers: [
+      { merchant: 'Merchant name', title: 'Grid offer 1', type: 'cashback', icon: 'local_offer' },
+      { merchant: 'Merchant name', title: 'Grid offer 2', type: 'points', icon: 'local_offer' },
+      { merchant: 'Merchant name', title: 'Grid offer 3', type: 'discount', icon: 'local_offer' },
+      { merchant: 'Merchant name', title: 'Grid offer 4', type: 'points', icon: 'local_offer' },
+    ],
     why: [
       {
         icon: 'insights',
@@ -124,6 +142,12 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       image: '/nitori_offer_1.jpg',
       logo: '/nitori_logo.jpg',
     },
+    gridOffers: [
+      { merchant: 'Merchant name', title: 'Grid offer 1', type: 'bundle', icon: 'local_offer' },
+      { merchant: 'Merchant name', title: 'Grid offer 2', type: 'discount', icon: 'local_offer' },
+      { merchant: 'Merchant name', title: 'Grid offer 3', type: 'points', icon: 'local_offer' },
+      { merchant: 'Merchant name', title: 'Grid offer 4', type: 'cashback', icon: 'local_offer' },
+    ],
     why: [
       {
         icon: 'insights',

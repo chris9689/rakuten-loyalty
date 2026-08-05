@@ -10,16 +10,13 @@ import { Disclaimer } from '@/components/ui/Card';
 import { settings } from '@/mock-data/settings';
 import { notifications } from '@/mock-data/notifications';
 
-/** Placeholder slots for the home offers grid (real offers added later). */
-const offerSlots = [1, 2, 3, 4];
-
 /** Chapter 1 — Home / loyalty overview. */
 export function StatusScreen() {
   const { user, goToChapter, appUser, appUserProfile, openWhy } = useDemo();
   const [query, setQuery] = useState('');
   const [notifDismissed, setNotifDismissed] = useState(false);
   const topNotif = notifications[0];
-  const { offer } = appUserProfile;
+  const { offer, gridOffers } = appUserProfile;
 
   return (
     <Screen chapterId={1}>
@@ -114,24 +111,44 @@ export function StatusScreen() {
             </span>
           </div>
           <div className="grid grid-cols-2 gap-3">
-            {offerSlots.map((slot) => (
+            {gridOffers.map((grid, i) => (
               <div
-                key={slot}
-                className="flex aspect-square flex-col justify-between rounded-2xl border border-dashed border-outline-variant bg-surface-container-low p-3"
+                key={`${grid.merchant}-${grid.title}-${i}`}
+                className="flex aspect-square flex-col justify-between overflow-hidden rounded-2xl border border-surface-container-high bg-surface-container-lowest shadow-card"
               >
-                <div className="flex items-center justify-between">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-container-high">
-                    <Icon name="local_offer" className="text-on-surface-variant" />
-                  </span>
-                  <span className="rounded-full bg-surface-container-high px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-on-surface-variant">
-                    Soon
+                {/* Media / icon header */}
+                <div className="relative flex h-20 items-center justify-center bg-surface-container-low">
+                  {grid.image ? (
+                    <img
+                      src={grid.image}
+                      alt={grid.merchant}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <Icon
+                      name={grid.icon ?? 'local_offer'}
+                      className="text-3xl text-on-surface-variant"
+                    />
+                  )}
+                  <span className="absolute right-2 top-2 rounded-full bg-primary px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
+                    {grid.type}
                   </span>
                 </div>
-                <div>
-                  <p className="font-heading text-sm font-bold text-on-surface">
-                    Offer slot {slot}
-                  </p>
-                  <p className="text-[11px] text-on-surface-variant">{offer.category}</p>
+
+                {/* Copy */}
+                <div className="flex flex-1 flex-col justify-between p-3">
+                  <div>
+                    <p className="font-heading text-sm font-bold leading-tight text-on-surface">
+                      {grid.title}
+                    </p>
+                    <p className="mt-0.5 text-[11px] text-on-surface-variant">
+                      {grid.merchant}
+                    </p>
+                  </div>
+                  <span className="mt-2 flex items-center gap-1 text-primary">
+                    <span className="text-[11px] font-semibold">View offer</span>
+                    <Icon name="chevron_right" className="text-sm" />
+                  </span>
                 </div>
               </div>
             ))}

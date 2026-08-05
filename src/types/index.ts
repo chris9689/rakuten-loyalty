@@ -231,6 +231,28 @@ export interface AppUserProfile {
   context: string;
   /** The main targeted "Recommended for you" offer. */
   offer: AppUserOffer;
+  /**
+   * Complementary offers rendered in the 2x2 "Offers for you" grid. Expect
+   * four entries; typically from the same category as {@link offer}.
+   */
+  gridOffers: GridOffer[];
   /** Ordered reasons shown in the "Why shown now" panel. */
   why: WhyReason[];
+}
+
+/**
+ * A complementary offer shown in the 2x2 home grid. Lighter-weight than the
+ * main {@link AppUserOffer}; usually shares the main offer's category.
+ */
+export interface GridOffer {
+  /** Merchant / partner name. */
+  merchant: string;
+  /** Short offer title. */
+  title: string;
+  /** Offer mechanic, e.g. 'points', 'discount', 'cashback', 'bundle'. */
+  type: string;
+  /** Optional thumbnail image path served from /public. */
+  image?: string;
+  /** Material Symbols icon name shown when no image is provided. */
+  icon?: string;
 }
