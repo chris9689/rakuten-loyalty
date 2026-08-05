@@ -66,6 +66,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       { merchant: 'Rakuten Ichiba', title: 'Warm lighting set', type: 'points', image: '/products/warm_lightening_set.webp', logo: '/Rakuten_Global_Brand_Logo.svg.webp' },
       { merchant: 'Nitori', title: 'Storage & organisation', type: 'cashback', image: '/nitori_offer_1.jpg', logo: '/nitori_logo.jpg' },
     ],
+    gridTitle: 'More upgrades for your home',
     whyShownNow:
       "Hanako has recently compared this kettle and purchased several home-related items. Together, these signals indicate she's currently furnishing a new home, making this offer highly relevant right now.",
     why: [
@@ -197,6 +198,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       { merchant: 'MTR Travel', title: 'Dining rewards', type: 'travel', image: '/kenji-dining-offer.jpg', logo: '/kenji-dining-offer-logo.jpg' },
       { merchant: 'MTR Travel', title: 'Airport lounge', type: 'travel', image: '/kenji-airport-lounge-offer.jpg', logo: '/kenji-airport-lounge-offer-logo.jpg' },
     ],
+    gridTitle: 'Make your trip comfortable',
     whyShownNow:
       "Kenji is actively planning a trip to Osaka and is eligible for this travel benefit. Activating it before completing the booking ensures he can take advantage of the available value.",
     why: [
@@ -270,6 +272,7 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       { merchant: 'Rakuten Ichiba', title: 'After-lunch pick', type: 'points', image: '/yuki-after-lunch.jpg', logo: '/yuki-after-lunch-logo.jpg' },
       { merchant: 'MTR Travel', title: 'Travel rewards', type: 'travel', image: '/yuki-travel-reward.jpg', logo: '/yuki-travel-reward-logo.jpg' },
     ],
+    gridTitle: 'Maximize your card value',
     whyShownNow:
       "It's lunchtime, Yuki is near participating restaurants, and her previous dining activity suggests strong interest in similar offers. This benefit is currently available and ready to activate.",
     why: [
