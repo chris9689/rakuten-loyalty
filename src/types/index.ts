@@ -289,6 +289,8 @@ export interface GridOffer {
   type: string;
   /** Optional thumbnail image path served from /public. */
   image?: string;
+  /** Optional merchant logo path served from /public (shown in place of the merchant name). */
+  logo?: string;
   /** Material Symbols icon name shown when no image is provided. */
   icon?: string;
 }

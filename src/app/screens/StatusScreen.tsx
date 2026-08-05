@@ -175,9 +175,17 @@ export function StatusScreen() {
                     <p className="font-heading text-sm font-bold leading-tight text-on-surface">
                       {grid.title}
                     </p>
-                    <p className="mt-0.5 text-[11px] text-on-surface-variant">
-                      {grid.merchant}
-                    </p>
+                    {grid.logo ? (
+                      <img
+                        src={grid.logo}
+                        alt={grid.merchant}
+                        className="mt-1 h-4 w-auto object-contain"
+                      />
+                    ) : (
+                      <p className="mt-0.5 text-[11px] text-on-surface-variant">
+                        {grid.merchant}
+                      </p>
+                    )}
                   </div>
                   <span className="mt-2 flex items-center gap-1 text-primary">
                     <span className="text-[11px] font-semibold">View offer</span>

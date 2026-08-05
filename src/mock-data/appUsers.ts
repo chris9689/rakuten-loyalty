@@ -191,10 +191,10 @@ export const appUserProfiles: Record<AppUserId, AppUserProfile> = {
       },
     ],
     gridOffers: [
-      { merchant: 'MTR Travel', title: 'Osaka hotels', type: 'travel', icon: 'hotel' },
-      { merchant: 'MTR Travel', title: 'Rail & transfers', type: 'travel', icon: 'train' },
-      { merchant: 'MTR Travel', title: 'Dining rewards', type: 'travel', icon: 'restaurant' },
-      { merchant: 'MTR Travel', title: 'Airport lounge', type: 'travel', icon: 'flight' },
+      { merchant: 'MTR Travel', title: 'Osaka hotels', type: 'travel', image: '/kenji-hotel-offer.jpg', logo: '/kenji-hotel-offer-logo.jpg' },
+      { merchant: 'MTR Travel', title: 'Rail & transfers', type: 'travel', image: '/kenji-railway-offer.jpg', logo: '/kenji-railway-offer-logo.jpg' },
+      { merchant: 'MTR Travel', title: 'Dining rewards', type: 'travel', image: '/kenji-dining-offer.jpg', logo: '/kenji-dining-offer-logo.jpg' },
+      { merchant: 'MTR Travel', title: 'Airport lounge', type: 'travel', image: '/kenji-airport-lounge-offer.jpg', logo: '/kenji-airport-lounge-offer-logo.jpg' },
     ],
     whyShownNow:
       "Kenji is actively planning a trip to Osaka and is eligible for this travel benefit. Activating it before completing the booking ensures he can take advantage of the available value.",
